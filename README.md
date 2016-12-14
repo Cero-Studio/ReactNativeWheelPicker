@@ -95,7 +95,7 @@ import WheelPicker from 'react-native-wheel-picker-android';
 ## Props
 
 
-### values
+### data
 
 An array of options. This should be provided with an __array of strings__ or __array of numbers__.
 
