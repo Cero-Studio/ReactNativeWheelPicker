@@ -1,4 +1,4 @@
-package com.pickertest;
+package com.wheelpicker;
 
 /**
  * Created by Eleken. on 13.12.16.
