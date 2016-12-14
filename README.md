@@ -96,11 +96,22 @@ import WheelPicker from 'react-native-wheel-picker-android';
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
-| horizontal | true | `bool` | If `true`, the scroll view's children are arranged horizontally in a row instead of vertically in a column. |
-| loop | true | `bool` | Set to `false` to disable continuous loop mode. |
-| index | 0 | `number` | Index number of initial slide. |
-| showsButtons | false | `bool` | Set to `true` make control buttons visible. |
-| autoplay | false | `bool` | Set to `true` enable auto play mode. |
+| onItemSelected | null | `func` | Callback when user select item {data: 'itemData', position: 'itemPosition'} |
+| data | default string array | `array` | Data array (string or number type)  |
+| isCurved | false | `bool` | Make Wheel Picker curved |
+| isCyclic | false | `bool` | Make Wheel Picker cyclic |
+| isAtmospheric | false | `bool` | Design Wheel Picker's items  |
+| selectedItemTextColor | grey | `string` | Wheel Picker's selected Item Text Color  |
+| itemSpace | 20 | `number` | Wheel Picker's items spacing |
+| visibleItemCount | 7 | `number` | Wheel Picker's items max visible count  |
+| renderIndicator | false | `bool` | Show Wheel Picker indicator |
+| indicatorColor | transparent | `string` | Indicator color  |
+| isCurtain | false | `bool` | Wheel Picker curtain  |
+| curtainColor | transparent | `string` | Wheel Picker curtain color  |
+| itemTextColor | grey | `string` | Wheel Picker's items color  |
+| itemTextSize | 20 | `number` |  Wheel Picker's items text size  |
+| selectedItemPosition | null | `number` | Select current item position |
+| backgroundColor | transparent | `string` | Wheel Picker background color  |
 
 ### data
 
