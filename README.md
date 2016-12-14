@@ -3,7 +3,7 @@ A simple Wheel Picker for Android
 
 ## Installation Android
 1. `npm install --save react-native-wheel-picker-android`
-2. 'react-native link'
+2. `react-native link`
 
 ## Usage
 
