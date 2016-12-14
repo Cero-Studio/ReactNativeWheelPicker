@@ -1,0 +1,23 @@
+{
+  "name": "react-native-wheel-picker-android",
+  "version": "0.0.12",
+  "description": "Simple Wheel Picker for Android to use with react-native",
+  "main": "WheelPicker.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElekenAgency/ReactNativeWheelPicker"
+  },
+  "keywords": [
+    "react-component",
+    "react-native",
+    "android",
+    "picker",
+    "wheel-picker"
+  ],
+  "author": "Artem Kosiakevych <artem.kosiakevych@eleken.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElekenAgency/ReactNativeWheelPicker/issues"
+  },
+  "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker"
+}
