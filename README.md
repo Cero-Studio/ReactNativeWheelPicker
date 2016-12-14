@@ -3,74 +3,7 @@ A simple Wheel Picker for Android
 
 ## Installation Android
 1. `npm install --save react-native-wheel-picker-android`
-2. In `android/settings.gradle`
-
-    ```gradle
-    ...
-    include ':ReactNativeWheelPicker', ':app'
-    project(':ReactNativeWheelPicker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-wheel-picker-android/android')
-    ```
-
-3. In `android/app/build.gradle`
-
-    ```gradle
-    ...
-    dependencies {
-        ...
-        compile project(':ReactNativeWheelPicker')
-    }
-    ```
-
-4. Register module (in MainActivity.java)
-
-    4.1. With RN < 0.19.0
-
-        ```java
-        import com.wheelpicker.WheelPickerPackage; // <----- import
-
-        public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-          ......
-
-          @Override
-          protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            mReactRootView = new ReactRootView(this);
-
-            mReactInstanceManager = ReactInstanceManager.builder()
-              .setApplication(getApplication())
-              .setBundleAssetName("index.android.bundle")
-              .setJSMainModuleName("index.android")
-              .addPackage(new MainReactPackage())
-              .addPackage(new WheelPickerPackage())              // <------ add here
-              .setUseDeveloperSupport(BuildConfig.DEBUG)
-              .setInitialLifecycleState(LifecycleState.RESUMED)
-              .build();
-
-            mReactRootView.startReactApplication(mReactInstanceManager, "ExampleRN", null);
-
-            setContentView(mReactRootView);
-          }
-          ......
-        }
-        ```
-
-    4.2. With RN >= 0.19.0
-
-        ```java
-        import com.wheelpicker.WheelPickerPackage; // <----- import
-
-        public class MainActivity extends ReactActivity {
-            ...
-
-            @Override
-            protected List<ReactPackage> getPackages() {
-              return Arrays.<ReactPackage>asList(
-                new MainReactPackage(),
-                new WheelPickerPackage() // <------ add here
-              );
-            }
-        }
-        ```
+2. 'react-native link'
 
 ## Usage
 
