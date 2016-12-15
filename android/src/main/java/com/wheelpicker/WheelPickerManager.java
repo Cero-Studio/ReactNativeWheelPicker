@@ -160,20 +160,22 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
 
     @Override
     public void onItemSelected(WheelPicker picker, Object data, int position) {
-        WritableMap eventData = Arguments.createMap();
+      WritableMap event = Arguments.createMap();
         try {
-            eventData.putString("data", (String) data);
+            event.putString("data", (String) data);
         } catch (Exception e){
             e.printStackTrace();
             try {
-                eventData.putInt("data", (Integer) data);
+                event.putInt("data", (Integer) data);
             } catch (Exception ex){
                 ex.printStackTrace();
             }
         }
-        eventData.putInt("position", position);
+        event.putInt("position", position);
         ReactContext reactContext = (ReactContext) ctx;
-        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit("itemSelected", eventData);
+        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+                picker.getId(),
+                "topChange",
+                event);
     }
 }
