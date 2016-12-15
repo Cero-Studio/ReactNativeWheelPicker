@@ -1,30 +1,26 @@
+'use strict';
+
 import React, { Component, PropTypes } from 'react';
-import { requireNativeComponent, DeviceEventEmitter,View } from 'react-native';
+import { requireNativeComponent,View } from 'react-native';
 
 var WheelPickerView = requireNativeComponent('WheelPicker', WheelPicker);
 class WheelPicker extends React.Component {
-  constructor() {
-    super();
-    this.onItemSelected = this.onItemSelected.bind(this);
-  }
-  componentWillMount() {
-         DeviceEventEmitter.addListener('itemSelected', this.onItemSelected);
-     }
-
-     componentWillUnmount() {
-         DeviceEventEmitter.removeListener('itemSelected', this.onItemSelected);
-     }
-  onItemSelected(event) {
-    if (this.props.onItemSelected) {
-      this.props.onItemSelected(event);
-    }
+  constructor(props) {
+   super(props);
+   this.onItemSelected = this.onItemSelected.bind(this);
+ }
+ onItemSelected(event: Event) {
+   if (!this.props.onItemSelected) {
+     return;
+   }
+   this.props.onItemSelected(event.nativeEvent);
   }
 
   render() {
      return (
        <WheelPickerView
          {...this.props}
-         onItemSelected={this.onItemSelected}
+         onChange={this.onItemSelected}
          data={this.props.data}
          isCurved={this.props.isCurved}
          isCyclic={this.props.isCyclic}
@@ -46,7 +42,7 @@ class WheelPicker extends React.Component {
 }
 WheelPicker.propTypes = {
   ...View.propTypes,
-      onItemSelected: PropTypes.func,
+      onItemSelected: React.PropTypes.func,
       data: PropTypes.array,
       isCurved: PropTypes.bool,
       isCyclic: PropTypes.bool,
