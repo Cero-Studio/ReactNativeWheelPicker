@@ -6,7 +6,7 @@ import {
 import WheelPicker from 'react-native-wheel-picker-android'
 import moment from 'moment';
 
-class DatePicker extends React.Component {
+class TimePicker extends React.Component {
   constructor(props){
     super(props)
     this.selectedDate = this.props.initDate ? new Date(this.props.initDate) : new Date()
@@ -156,4 +156,4 @@ function getAmArray(){
   arr.push('PM')
   return arr
 }
-module.exports = DatePicker;
+module.exports = TimePicker;
