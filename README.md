@@ -14,7 +14,7 @@ A simple Wheel Picker for Android
 
 ```js
 
-import WheelPicker from 'react-native-wheel-picker-android';
+import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-android'
 ...
 
   render() {
@@ -36,7 +36,6 @@ import WheelPicker from 'react-native-wheel-picker-android';
 
 ```js
 
-import TimePicker from './TimePicker';
 ...
 
   render() {
@@ -63,7 +62,6 @@ import TimePicker from './TimePicker';
 
 ```js
 
-import DatePicker from './DatePicker';
 ...
 
   render() {
