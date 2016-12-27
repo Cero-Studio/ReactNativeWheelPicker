@@ -2,6 +2,9 @@
 A simple Wheel Picker for Android
 
 ![ui2](./ui.png)
+![](./wheelpicker.gif)
+![](./wheelpicker.gif)
+![](./wheelpicker.gif)
 
 ## Installation Android
 1. `npm install react-native-wheel-picker-android --save`
