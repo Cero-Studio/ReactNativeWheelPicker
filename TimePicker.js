@@ -3,7 +3,7 @@ import {
   View,
   StyleSheet
 } from 'react-native'
-import WheelPicker from 'react-native-wheel-picker-android'
+import WheelPicker from './WheelPicker'
 import moment from 'moment';
 
 class TimePicker extends React.Component {

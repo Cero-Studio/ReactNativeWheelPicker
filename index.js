@@ -1,6 +1,6 @@
-import WheelPicker from './WheelPicker.js';
-import TimePicker from './TimePicker.js';
-import DatePicker from './DatePicker.js';
+import WheelPicker from './WheelPicker';
+import TimePicker from './TimePicker';
+import DatePicker from './DatePicker';
 
 
 export {
