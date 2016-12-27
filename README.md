@@ -4,10 +4,8 @@ A simple Wheel Picker for Android
 ![ui2](./ui.png)
 
 ## Installation Android
-1. add to your package.json dependencies 
-`"react-native-wheel-picker-android": "git+https://github.com/ElekenAgency/ReactNativeWheelPicker"`
-2. `npm i`
-3. `react-native link`
+1. `npm install react-native-wheel-picker-android --save`
+2. `react-native link react-native-wheel-picker-android`
 
 ## Usage
 
@@ -47,11 +45,11 @@ import TimePicker from './TimePicker';
 					/>
     );
   }
-  
+
   onDateSelected(date){
     // do something
   }
-  
+
 ```
 
 ## Date Picker
@@ -69,11 +67,11 @@ import DatePicker from './DatePicker';
 					onDateSelected={(date)=> this.onDateSelected(date)}/>
     );
   }
-  
+
   onDateSelected(date){
     // do something
   }
-  
+
 ```
 
 ## Props

@@ -5,7 +5,7 @@
   "main": "WheelPicker.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ElekenAgency/ReactNativeWheelPicker"
+    "url": "git+https://github.com/ElekenAgency/ReactNativeWheelPicker.git"
   },
   "keywords": [
     "react-component",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ElekenAgency/ReactNativeWheelPicker/issues"
   },
-  "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker"
+  "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
