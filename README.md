@@ -1,7 +1,7 @@
 # ReactNativeWheelPicker
 A simple Wheel Picker for Android
 
-![ui2](./ui.png)
+![](./wheelPicker.gif)
 
 ## Installation Android
 1. `npm install react-native-wheel-picker-android --save`
@@ -29,6 +29,8 @@ import WheelPicker from 'react-native-wheel-picker-android';
 
 ## Time Picker
 
+![](./timePicker.gif)
+
 ```js
 
 import TimePicker from './TimePicker';
@@ -53,6 +55,8 @@ import TimePicker from './TimePicker';
 ```
 
 ## Date Picker
+
+![](./datePicker.gif)
 
 ```js
 
