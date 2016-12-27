@@ -27,6 +27,53 @@ import WheelPicker from 'react-native-wheel-picker-android';
   }
 ```
 
+## Time Picker
+
+```js
+
+import TimePicker from './TimePicker';
+...
+
+  render() {
+  let minutesArray = ['00', '15', '30', '45'];
+  let now = new Date();
+    return (
+      	<TimePicker
+					minutes={minutesArray}
+					onDateSelected={(date)=>this.onDateSelected(date))}
+					initDate={now.toISOString()}
+					/>
+    );
+  }
+  
+  onDateSelected(date){
+    // do something
+  }
+  
+```
+
+## Date Picker
+
+```js
+
+import DatePicker from './DatePicker';
+...
+
+  render() {
+  let now = new Date();
+    return (
+      	<DatePicker
+					initDate={now.toISOString()}
+					onDateSelected={(date)=> this.onDateSelected(date)}/>
+    );
+  }
+  
+  onDateSelected(date){
+    // do something
+  }
+  
+```
+
 ## Props
 
 | Prop  | Default  | Type | Description |
@@ -56,6 +103,29 @@ An array of options. This should be provided with an __array of strings__ or __a
 ### onItemSelected(event)
 
 Callback with event in the form `event = { data: 1, position: 0 }`
+
+## Time Picker Props
+
+| Prop  | Default  | Type | Description |
+| :------------ |:---------------:| :---------------:| :-----|
+| onDateSelected | null | `func` | Callback when user select time {date: 'selectedDate'} |
+| initDate | current date | `ISOString` | Initial selected time  |
+| hours | [1,2,3..12] | `array` | hours array |
+| minutes | ['00','05','10'..'55'] | `array` | minutes array |
+
+
+## Date Picker Props
+
+| Prop  | Default  | Type | Description |
+| :------------ |:---------------:| :---------------:| :-----|
+| onDateSelected | null | `func` | Callback when user select date {date: 'selectedDate'} |
+| initDate | current date | `ISOString` | Initial selected date  |
+| days | ['Today','Wed Dec 28'...] | `array` | days array |
+| hours | [1,2,3..12] | `array` | hours array |
+| minutes | ['00','05','10'..'55'] | `array` | minutes array |
+| format24 | false | `bool` | if true hours format is 24 hours|
+| startDate | current date | `ISOString` | The Earlest date |
+| daysCount | 365 | `number` | How many days included in Date Picker |
 
 ## Questions or suggestions?
 
