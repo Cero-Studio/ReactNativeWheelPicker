@@ -110,8 +110,8 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | :------------ |:---------------:| :---------------:| :-----|
 | onDateSelected | null | `func` | Callback when user select time {date: 'selectedDate'} |
 | initDate | current date | `ISOString` | Initial selected time  |
-| hours | [1,2,3..12] | `array` | hours array |
-| minutes | ['00','05','10'..'55'] | `array` | minutes array |
+| hours | [1, 2, 3, .. 12] | `array` | hours array |
+| minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
 
 
 ## Date Picker Props
@@ -120,9 +120,9 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | :------------ |:---------------:| :---------------:| :-----|
 | onDateSelected | null | `func` | Callback when user select date {date: 'selectedDate'} |
 | initDate | current date | `ISOString` | Initial selected date  |
-| days | ['Today','Wed Dec 28'...] | `array` | days array |
-| hours | [1,2,3..12] | `array` | hours array |
-| minutes | ['00','05','10'..'55'] | `array` | minutes array |
+| days | ['Today', 'Wed Dec 28', ...] | `array` | days array |
+| hours | [1, 2, 3 .. 12] | `array` | hours array |
+| minutes | ['00', '05', '10', .. '55'] | `array` | minutes array |
 | format24 | false | `bool` | if true hours format is 24 hours|
 | startDate | current date | `ISOString` | The Earlest date |
 | daysCount | 365 | `number` | How many days included in Date Picker |
