@@ -1,6 +1,8 @@
 # ReactNativeWheelPicker
 A simple Wheel Picker for Android
 
+![ui](./ui.jpg)
+
 ## Installation Android
 1. add to your package.json dependencies 
 `"react-native-wheel-picker-android": "git+https://github.com/ElekenAgency/ReactNativeWheelPicker"`
