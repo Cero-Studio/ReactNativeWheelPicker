@@ -86,7 +86,7 @@ class TimePicker extends React.Component {
 
 }
 
-DatePicker.propTypes = {
+TimePicker.propTypes = {
   initDate: React.PropTypes.string,
   onDateSelected: React.PropTypes.func,
   hours: React.PropTypes.array,
