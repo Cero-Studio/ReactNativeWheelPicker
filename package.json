@@ -1,6 +1,6 @@
 {
   "name": "react-native-wheel-picker-android",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple Wheel Picker for Android to use with react-native",
   "main": "index.js",
   "repository": {
@@ -27,11 +27,18 @@
   },
   "devDependencies": {
     "ava": "^0.17.0",
+    "react": "~15.3.0",
+    "react-native": "^0.34.0",
+    "react-dom": "^15.3.1",
+    "react-addons-test-utils": "^15.3.1",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "pre-commit": "^1.2.2"
-  }
+  },
+  "pre-commit": [
+    "test"
+  ]
 }
