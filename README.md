@@ -18,7 +18,7 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
 ...
 
   render() {
-  let arr = [1,2,3];
+    let arr = [1,2,3];
     return (
       <WheelPicker
           onItemSelected={(event)=>{console.log(event)}}
@@ -39,14 +39,13 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
 ...
 
   render() {
-  let minutesArray = ['00', '15', '30', '45'];
-  let now = new Date();
+    let minutesArray = ['00', '15', '30', '45'];
+    let now = new Date();
     return (
       	<TimePicker
-					minutes={minutesArray}
-					onDateSelected={(date)=>this.onDateSelected(date))}
-					initDate={now.toISOString()}
-					/>
+	    minutes={minutesArray}
+   	    onDateSelected={(date)=>this.onDateSelected(date))}
+	    initDate={now.toISOString()}/>
     );
   }
 
@@ -68,8 +67,8 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
   let now = new Date();
     return (
       	<DatePicker
-					initDate={now.toISOString()}
-					onDateSelected={(date)=> this.onDateSelected(date)}/>
+	    initDate={now.toISOString()}
+	    onDateSelected={(date)=> this.onDateSelected(date)}/>
     );
   }
 
