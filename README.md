@@ -2,13 +2,76 @@
 [![npm version](http://img.shields.io/npm/v/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
 [![npm version](http://img.shields.io/npm/dm/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
 
-A simple Wheel Picker for Android
+A simple Wheel Picker for Android based on https://github.com/AigeStudio/WheelPicker
+Also you can use multiple pickers, such as DatePicker or TimePicker
 
 ## Installation Android
 1. `npm install react-native-wheel-picker-android --save`
 2. `react-native link react-native-wheel-picker-android`
 
 # Usage
+
+```js
+
+import {WheelPicker, DatePicker, TimePicker} from 'react-native-wheel-picker-android'
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+
+class MyPickers extends Component {
+  render() {
+    let now = new Date()
+    let wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return (
+      <View style={styles.container}>
+        <WheelPicker
+           onItemSelected={(event)=>this.onItemSelected(event)}
+           isCurved
+           data={wheelPickerData}
+           style={styles.wheelPicker}/>
+         <DatePicker
+           initDate={now.toISOString()}
+           onDateSelected={(date)=>this.onDateSelected(date)}/>
+         <TimePicker
+           initDate={now.toISOString()}
+           onTimeSelected={(date)=>this.onTimeSelected(date)}/>
+      </View>
+    );
+  }
+
+  onItemSelected(event){
+    // do something
+  }
+
+  onDateSelected(date){
+    // do something
+  }
+
+  onTimeSelected(date){
+    // do something
+  }
+
+
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  wheelPicker: {
+    width:200,
+    height: 150
+  }
+});
+
+module.exports = MyPickers;
+
+```
 
 ## Wheel Picker
 
@@ -92,7 +155,7 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
-| onDateSelected | null | `func` | Callback when user select time {date: 'selectedDate'} |
+| onTimeSelected | null | `func` | Callback when user select time {date: 'selectedTime'} |
 | initDate | current date | `ISOString` | Initial selected time  |
 | hours | [1, 2, 3, .. 12] | `array` | hours array |
 | minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
