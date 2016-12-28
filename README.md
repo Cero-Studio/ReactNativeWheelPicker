@@ -4,13 +4,15 @@
 
 A simple Wheel Picker for Android
 
-![](./src/wheelPicker.gif)
-
 ## Installation Android
 1. `npm install react-native-wheel-picker-android --save`
 2. `react-native link react-native-wheel-picker-android`
 
-## Usage
+# Usage
+
+## Wheel Picker
+
+![](./src/wheelPicker.gif)
 
 ```js
 
@@ -28,54 +30,6 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
           style={{width:300, height: 300}}/>
     );
   }
-```
-
-## Time Picker
-
-![](./src/timePicker.gif)
-
-```js
-
-...
-
-  render() {
-    let minutesArray = ['00', '15', '30', '45'];
-    let now = new Date();
-    return (
-      	<TimePicker
-	    minutes={minutesArray}
-   	    onDateSelected={(date)=>this.onDateSelected(date))}
-	    initDate={now.toISOString()}/>
-    );
-  }
-
-  onDateSelected(date){
-    // do something
-  }
-
-```
-
-## Date Picker
-
-![](./src/datePicker.gif)
-
-```js
-
-...
-
-  render() {
-  let now = new Date();
-    return (
-      	<DatePicker
-	    initDate={now.toISOString()}
-	    onDateSelected={(date)=> this.onDateSelected(date)}/>
-    );
-  }
-
-  onDateSelected(date){
-    // do something
-  }
-
 ```
 
 ## Props
@@ -108,7 +62,33 @@ An array of options. This should be provided with an __array of strings__ or __a
 
 Callback with event in the form `event = { data: 1, position: 0 }`
 
-## Time Picker Props
+
+## Time Picker
+
+![](./src/timePicker.gif)
+
+```js
+
+...
+
+  render() {
+    let minutesArray = ['00', '15', '30', '45'];
+    let now = new Date();
+    return (
+      	<TimePicker
+	    minutes={minutesArray}
+   	    onDateSelected={(date)=>this.onDateSelected(date))}
+	    initDate={now.toISOString()}/>
+    );
+  }
+
+  onDateSelected(date){
+    // do something
+  }
+
+```
+
+## Props
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
@@ -118,7 +98,30 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
 
 
-## Date Picker Props
+## Date Picker
+
+![](./src/datePicker.gif)
+
+```js
+
+...
+
+  render() {
+  let now = new Date();
+    return (
+      	<DatePicker
+	    initDate={now.toISOString()}
+	    onDateSelected={(date)=> this.onDateSelected(date)}/>
+    );
+  }
+
+  onDateSelected(date){
+    // do something
+  }
+
+```
+
+## Props
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
