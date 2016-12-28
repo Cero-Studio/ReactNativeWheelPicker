@@ -75,12 +75,12 @@ class TimePicker extends React.Component {
     const newTime12Format = `${event.data} ${time12format[1]}`;
     const selectedHour24format = hourTo24Format(newTime12Format);
     this.selectedDate.setHours(selectedHour24format);
-    this.onDateSelected();
+    this.onTimeSelected();
   }
 
   onMinuteSelected(event) {
     this.selectedDate.setMinutes(event.data);
-    this.onDateSelected();
+    this.onTimeSelected();
   }
 
   onAmSelected(event) {
@@ -88,12 +88,12 @@ class TimePicker extends React.Component {
     const newTime12Format = `${time12format[0]} ${event.data}`;
     const selectedHour24format = hourTo24Format(newTime12Format);
     this.selectedDate.setHours(selectedHour24format);
-    this.onDateSelected();
+    this.onTimeSelected();
   }
 
-  onDateSelected() {
-    if (this.props.onDateSelected) {
-      this.props.onDateSelected(this.selectedDate);
+  onTimeSelected() {
+    if (this.props.onTimeSelected) {
+      this.props.onTimeSelected(this.selectedDate);
     }
   }
 
@@ -101,7 +101,7 @@ class TimePicker extends React.Component {
 
 TimePicker.propTypes = {
   initDate: React.PropTypes.string,
-  onDateSelected: React.PropTypes.func,
+  onTimeSelected: React.PropTypes.func,
   hours: React.PropTypes.array,
   minutes: React.PropTypes.array,
 };

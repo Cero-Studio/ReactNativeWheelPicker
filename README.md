@@ -76,13 +76,13 @@ Callback with event in the form `event = { data: 1, position: 0 }`
     let now = new Date();
     return (
       	<TimePicker
-	    minutes={minutesArray}
-   	    onDateSelected={(date)=>this.onDateSelected(date))}
-	    initDate={now.toISOString()}/>
+	       minutes={minutesArray}
+   	     onTimeSelected={(date)=>this.onTimeSelected(date))}
+	       initDate={now.toISOString()}/>
     );
   }
 
-  onDateSelected(date){
+  onTimeSelected(date){
     // do something
   }
 
