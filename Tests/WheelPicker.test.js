@@ -10,13 +10,13 @@ test('component exists', (t) => {
 });
 
 test('component structure', (t) => {
-  t.is(wrapper.name(), 'WheelPicker'); // the right root component
-  t.is(wrapper.children().length, 0); // has 1 child
+  t.is(wrapper.name(), 'WheelPicker');
+  t.is(wrapper.children().length, 0);
 });
 
-test('data', (t) => {
+test('props', (t) => {
   const data = [1, 2, 3];
-  const wrapperPress = shallow(<WheelPicker isCyclic={false} isCurved isAtmospheric visibleItemCount={4} backgroundColor={'black'} data={data} />);
+  const wrapperPress = shallow(<WheelPicker selectedItemTextColor={'yellow'} itemSpace={39} renderIndicator indicatorColor={'grey'} curtainColor={'green'} itemTextColor={'white'} itemTextSize={23} selectedItemPosition={1} isCyclic={false} isCurved isAtmospheric visibleItemCount={4} backgroundColor={'black'} data={data} />);
 
   t.is(wrapperPress.prop('data').length, 3);
   t.is(wrapperPress.prop('isCurved'), true);
@@ -24,4 +24,12 @@ test('data', (t) => {
   t.is(wrapperPress.prop('isCyclic'), false);
   t.is(wrapperPress.prop('visibleItemCount'), 4);
   t.is(wrapperPress.prop('backgroundColor'), 'black');
+  t.is(wrapperPress.prop('selectedItemPosition'), 1);
+  t.is(wrapperPress.prop('itemTextSize'), 23);
+  t.is(wrapperPress.prop('itemTextColor'), 'white');
+  t.is(wrapperPress.prop('curtainColor'), 'green');
+  t.is(wrapperPress.prop('renderIndicator'), true);
+  t.is(wrapperPress.prop('indicatorColor'), 'grey');
+  t.is(wrapperPress.prop('itemSpace'), 39);
+  t.is(wrapperPress.prop('selectedItemTextColor'), 'yellow');
 });
