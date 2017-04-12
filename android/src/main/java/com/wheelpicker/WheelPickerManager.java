@@ -20,7 +20,6 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
 
     public static final String REACT_CLASS = "WheelPicker";
     private ThemedReactContext ctx;
-    private WheelPicker wheelPicker;
 
     @Override
     public String getName() {
@@ -30,13 +29,13 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
     @Override
     protected WheelPicker createViewInstance(ThemedReactContext context) {
         ctx = context;
-        wheelPicker = new WheelPicker(context);
+        WheelPicker wheelPicker = new WheelPicker(context);
         wheelPicker.setOnItemSelectedListener(this);
         return wheelPicker;
     }
 
     @ReactProp(name = "data")
-    public void setData(WheelPicker view, ReadableArray data) {
+    public void setData(WheelPicker wheelPicker, ReadableArray data) {
         if (wheelPicker!=null){
             List<String> emptyList = new ArrayList<>();
             try {
@@ -61,98 +60,98 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
     }
 
     @ReactProp(name = "isCurved")
-    public void setCurved(WheelPicker view, Boolean isCurved) {
+    public void setCurved(WheelPicker wheelPicker, Boolean isCurved) {
         if (wheelPicker!=null){
             wheelPicker.setCurved(isCurved);
         }
     }
 
     @ReactProp(name = "isCyclic")
-    public void setCyclic(WheelPicker view, Boolean isCyclic) {
+    public void setCyclic(WheelPicker wheelPicker, Boolean isCyclic) {
         if (wheelPicker!=null){
             wheelPicker.setCyclic(isCyclic);
         }
     }
 
     @ReactProp(name = "isAtmospheric")
-    public void setAtmospheric(WheelPicker view, Boolean isAtmospheric) {
+    public void setAtmospheric(WheelPicker wheelPicker, Boolean isAtmospheric) {
         if (wheelPicker!=null){
             wheelPicker.setAtmospheric(isAtmospheric);
         }
     }
 
     @ReactProp(name = "selectedItemTextColor")
-    public void setSelectedItemTextColor(WheelPicker view, String selectedItemTextColor) {
+    public void setSelectedItemTextColor(WheelPicker wheelPicker, String selectedItemTextColor) {
         if (wheelPicker!=null){
             wheelPicker.setSelectedItemTextColor(Color.parseColor(selectedItemTextColor));
         }
     }
 
     @ReactProp(name = "itemSpace")
-    public void setItemSpace(WheelPicker view, int itemSpace) {
+    public void setItemSpace(WheelPicker wheelPicker, int itemSpace) {
         if (wheelPicker!=null){
             wheelPicker.setItemSpace(itemSpace);
         }
     }
 
     @ReactProp(name = "visibleItemCount")
-    public void setVisibleItemCount(WheelPicker view, int visibleItemCount) {
+    public void setVisibleItemCount(WheelPicker wheelPicker, int visibleItemCount) {
         if (wheelPicker!=null){
             wheelPicker.setVisibleItemCount(visibleItemCount);
         }
     }
 
     @ReactProp(name = "renderIndicator")
-    public void setIndicator(WheelPicker view, Boolean renderIndicator) {
+    public void setIndicator(WheelPicker wheelPicker, Boolean renderIndicator) {
         if (wheelPicker!=null){
             wheelPicker.setIndicator(renderIndicator);
         }
     }
 
     @ReactProp(name = "indicatorColor")
-    public void setIndicatorColor(WheelPicker view, String indicatorColor) {
+    public void setIndicatorColor(WheelPicker wheelPicker, String indicatorColor) {
         if (wheelPicker!=null){
             wheelPicker.setIndicatorColor(Color.parseColor(indicatorColor));
         }
     }
 
     @ReactProp(name = "isCurtain")
-    public void setCurtain(WheelPicker view, Boolean isCurtain) {
+    public void setCurtain(WheelPicker wheelPicker, Boolean isCurtain) {
         if (wheelPicker!=null){
             wheelPicker.setCurtain(isCurtain);
         }
     }
 
     @ReactProp(name = "curtainColor")
-    public void setCurtainColor(WheelPicker view, String curtainColor) {
+    public void setCurtainColor(WheelPicker wheelPicker, String curtainColor) {
         if (wheelPicker!=null){
             wheelPicker.setCurtainColor(Color.parseColor(curtainColor));
         }
     }
 
     @ReactProp(name = "itemTextColor")
-    public void setItemTextColor(WheelPicker view, String itemTextColor) {
+    public void setItemTextColor(WheelPicker wheelPicker, String itemTextColor) {
         if (wheelPicker!=null){
             wheelPicker.setItemTextColor(Color.parseColor(itemTextColor));
         }
     }
 
     @ReactProp(name = "itemTextSize")
-    public void setItemTextSize(WheelPicker view, int itemTextSize) {
+    public void setItemTextSize(WheelPicker wheelPicker, int itemTextSize) {
         if (wheelPicker!=null){
             wheelPicker.setItemTextSize(itemTextSize);
         }
     }
 
     @ReactProp(name = "selectedItemPosition")
-    public void setSelectedItemPosition(WheelPicker view, int selectedItemPosition) {
+    public void setSelectedItemPosition(WheelPicker wheelPicker, int selectedItemPosition) {
         if (wheelPicker!=null){
             wheelPicker.setSelectedItemPosition(selectedItemPosition);
         }
     }
 
     @ReactProp(name = "backgroundColor")
-    public void setBackgroundColor(WheelPicker view, String backgroundColor) {
+    public void setBackgroundColor(WheelPicker wheelPicker, String backgroundColor) {
         if (wheelPicker!=null){
             wheelPicker.setBackgroundColor(Color.parseColor(backgroundColor));
         }
@@ -160,7 +159,7 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
 
     @Override
     public void onItemSelected(WheelPicker picker, Object data, int position) {
-      WritableMap event = Arguments.createMap();
+        WritableMap event = Arguments.createMap();
         try {
             event.putString("data", (String) data);
         } catch (Exception e){
@@ -174,8 +173,8 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
         event.putInt("position", position);
         ReactContext reactContext = (ReactContext) ctx;
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
-                picker.getId(),
-                "topChange",
-                event);
+            picker.getId(),
+            "topChange",
+            event);
     }
 }
