@@ -113,6 +113,7 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
 | curtainColor | transparent | `string` | Wheel Picker curtain color  |
 | itemTextColor | grey | `string` | Wheel Picker's items color  |
 | itemTextSize | 20 | `number` |  Wheel Picker's items text size  |
+| itemTextFontFamily | null | `string` | Wheel Picker's items text font name  |
 | selectedItemPosition | null | `number` | Select current item position |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
 

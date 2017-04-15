@@ -16,7 +16,7 @@ test('component structure', (t) => {
 
 test('props', (t) => {
   const data = [1, 2, 3];
-  const wrapperPress = shallow(<WheelPicker selectedItemTextColor={'yellow'} itemSpace={39} renderIndicator indicatorColor={'grey'} curtainColor={'green'} itemTextColor={'white'} itemTextSize={23} selectedItemPosition={1} isCyclic={false} isCurved isAtmospheric visibleItemCount={4} backgroundColor={'black'} data={data} />);
+  const wrapperPress = shallow(<WheelPicker selectedItemTextColor={'yellow'} itemSpace={39} renderIndicator indicatorColor={'grey'} curtainColor={'green'} itemTextColor={'white'} itemTextFontFamily={'Tahoma'} itemTextSize={23} selectedItemPosition={1} isCyclic={false} isCurved isAtmospheric visibleItemCount={4} backgroundColor={'black'} data={data} />);
 
   t.is(wrapperPress.prop('data').length, 3);
   t.is(wrapperPress.prop('isCurved'), true);
@@ -27,6 +27,7 @@ test('props', (t) => {
   t.is(wrapperPress.prop('selectedItemPosition'), 1);
   t.is(wrapperPress.prop('itemTextSize'), 23);
   t.is(wrapperPress.prop('itemTextColor'), 'white');
+  t.is(wrapperPress.prop('itemTextFontFamily'), 'Tahoma');
   t.is(wrapperPress.prop('curtainColor'), 'green');
   t.is(wrapperPress.prop('renderIndicator'), true);
   t.is(wrapperPress.prop('indicatorColor'), 'grey');
