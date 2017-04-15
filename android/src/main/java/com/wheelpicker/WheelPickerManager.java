@@ -19,7 +19,6 @@ import java.util.List;
 public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implements WheelPicker.OnItemSelectedListener{
 
     public static final String REACT_CLASS = "WheelPicker";
-    private ThemedReactContext ctx;
 
     @Override
     public String getName() {
@@ -28,7 +27,6 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
 
     @Override
     protected WheelPicker createViewInstance(ThemedReactContext context) {
-        ctx = context;
         WheelPicker wheelPicker = new WheelPicker(context);
         wheelPicker.setOnItemSelectedListener(this);
         return wheelPicker;
@@ -171,8 +169,7 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
             }
         }
         event.putInt("position", position);
-        ReactContext reactContext = (ReactContext) ctx;
-        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+        ((ReactContext) wheelPicker.getContext()).getJSModule(RCTEventEmitter.class).receiveEvent(
             picker.getId(),
             "topChange",
             event);
