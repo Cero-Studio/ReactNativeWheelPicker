@@ -12,14 +12,15 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
+import com.facebook.react.views.text.ReactFontManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implements WheelPicker.OnItemSelectedListener{
 
     public static final String REACT_CLASS = "WheelPicker";
-    private ThemedReactContext ctx;
 
     @Override
     public String getName() {
@@ -28,7 +29,6 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
 
     @Override
     protected WheelPicker createViewInstance(ThemedReactContext context) {
-        ctx = context;
         WheelPicker wheelPicker = new WheelPicker(context);
         wheelPicker.setOnItemSelectedListener(this);
         return wheelPicker;
@@ -143,6 +143,14 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
         }
     }
 
+    @ReactProp(name = "itemTextFontFamily")
+    public void setSelectedItemPosition(WheelPicker wheelPicker, String itemTextFontFamily) {
+      if (wheelPicker!=null){
+        Typeface typeface = ReactFontManager.getInstance().getTypeface(itemTextFontFamily, Typeface.NORMAL, wheelPicker.getContext().getAssets());
+        wheelPicker.setTypeface(typeface);
+      }
+    }
+
     @ReactProp(name = "selectedItemPosition")
     public void setSelectedItemPosition(WheelPicker wheelPicker, int selectedItemPosition) {
         if (wheelPicker!=null){
@@ -171,8 +179,7 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
             }
         }
         event.putInt("position", position);
-        ReactContext reactContext = (ReactContext) ctx;
-        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+        ((ReactContext) picker.getContext()).getJSModule(RCTEventEmitter.class).receiveEvent(
             picker.getId(),
             "topChange",
             event);
