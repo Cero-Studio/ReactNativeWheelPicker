@@ -61,4 +61,7 @@ WheelPicker.propTypes = {
       selectedItemPosition: PropTypes.number,
       backgroundColor: PropTypes.string,
 };
+WheelPicker.defaultProps = {
+  selectedItemPosition: 0
+}
 module.exports = WheelPicker;
