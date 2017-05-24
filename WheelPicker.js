@@ -8,6 +8,9 @@ class WheelPicker extends React.Component {
   constructor(props) {
    super(props);
    this.onItemSelected = this.onItemSelected.bind(this);
+   this.state = {
+     selectedItemPosition: 0
+   }
  }
  onItemSelected(event: Event) {
    if (!this.props.onItemSelected) {
@@ -15,6 +18,10 @@ class WheelPicker extends React.Component {
    }
    this.props.onItemSelected(event.nativeEvent);
   }
+
+  componentDidMount() {
+     this.setState({ selectedItemPosition: this.props.selectedItemPosition })
+   }
 
   render() {
      return (
@@ -35,7 +42,7 @@ class WheelPicker extends React.Component {
          itemTextColor={this.props.itemTextColor}
          itemTextSize={this.props.itemTextSize}
          itemTextFontFamily={this.props.itemTextFontFamily}
-         selectedItemPosition={this.props.selectedItemPosition}
+         selectedItemPosition={this.state.selectedItemPosition}
          backgroundColor={this.props.backgroundColor}
          />
      );
@@ -61,7 +68,4 @@ WheelPicker.propTypes = {
       selectedItemPosition: PropTypes.number,
       backgroundColor: PropTypes.string,
 };
-WheelPicker.defaultProps = {
-  selectedItemPosition: 0
-}
 module.exports = WheelPicker;
