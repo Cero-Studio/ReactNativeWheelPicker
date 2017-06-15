@@ -1,4 +1,6 @@
 import React from 'react';
+import {I18nManager} from 'react-native';
+
 import {
   View,
   StyleSheet,
@@ -10,7 +12,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'row',
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row'
   },
   wheelPicker: {
     height: 150,
