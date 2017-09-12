@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { requireNativeComponent,View } from 'react-native';
 
 var WheelPickerView = requireNativeComponent('WheelPicker', WheelPicker);
@@ -50,7 +51,7 @@ class WheelPicker extends React.Component {
 }
 WheelPicker.propTypes = {
   ...View.propTypes,
-      onItemSelected: React.PropTypes.func,
+      onItemSelected: PropTypes.func,
       data: PropTypes.array,
       isCurved: PropTypes.bool,
       isCyclic: PropTypes.bool,
