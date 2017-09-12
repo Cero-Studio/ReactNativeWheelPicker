@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import WheelPicker from './WheelPicker';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 class DatePicker extends React.Component {
   constructor(props) {
@@ -135,14 +136,14 @@ class DatePicker extends React.Component {
 }
 
 DatePicker.propTypes = {
-  initDate: React.PropTypes.string,
-  onDateSelected: React.PropTypes.func,
-  startDate: React.PropTypes.string,
-  daysCount: React.PropTypes.number,
-  days: React.PropTypes.array,
-  hours: React.PropTypes.array,
-  minutes: React.PropTypes.array,
-  format24: React.PropTypes.bool,
+  initDate: PropTypes.string,
+  onDateSelected: PropTypes.func,
+  startDate: PropTypes.string,
+  daysCount: PropTypes.number,
+  days: PropTypes.array,
+  hours: PropTypes.array,
+  minutes: PropTypes.array,
+  format24: PropTypes.bool,
 };
 
 let styles = StyleSheet.create({
