@@ -8,6 +8,18 @@ Also you can use multiple pickers, such as DatePicker or TimePicker
 ## Installation Android
 1. `npm install react-native-wheel-picker-android --save`
 2. `react-native link react-native-wheel-picker-android`
+3. In `android/build.gradle` add the jitpack repository to your project.
+
+```diff
+allprojects {
+    repositories {
+        ...
++       maven {
++          url "https://jitpack.io"
++       }
+    }
+}
+```
 
 # Usage
 
