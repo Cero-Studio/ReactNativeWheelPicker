@@ -18,5 +18,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.facebook.react:react-native:0.19.+'
-    compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+    compile 'com.github.AigeStudio:WheelPicker:master-SNAPSHOT'
 }
