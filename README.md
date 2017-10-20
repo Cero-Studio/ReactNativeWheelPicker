@@ -160,6 +160,7 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | initDate | current date | `ISOString` | Initial selected time  |
 | hours | [1, 2, 3, .. 12] | `array` | hours array |
 | minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
+| format24 | false | `bool` | if true hours format is 24 hours|
 
 
 ## Date Picker
