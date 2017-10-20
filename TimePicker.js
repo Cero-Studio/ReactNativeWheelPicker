@@ -27,9 +27,11 @@ class TimePicker extends React.Component {
     super(props);
     this.selectedDate = this.props.initDate ? new Date(this.props.initDate) : new Date();
     const time12format = hourTo12Format(this.selectedDate.getHours());
-    this.hours = this.props.hours ? this.props.hours : getHoursArray();
+    const time24format = this.selectedDate.getHours();
+
+    this.hours = this.props.hours ? this.props.hours : getHoursArray(this.props.format24);
     this.minutes = this.props.minutes ? this.props.minutes : getFiveMinutesArray();
-    this.initHourInex = time12format[0] - 1;
+    this.initHourInex = this.props.format24 ? time24format : time12format[0] - 1;
     const minutesCount = this.props.minutes ? this.props.minutes.length : 12
     const minutesInHour = 60
     this.initMinuteInex = Math.round(this.selectedDate.getMinutes() / (minutesInHour / minutesCount));
@@ -61,7 +63,7 @@ class TimePicker extends React.Component {
           onItemSelected={data => this.onMinuteSelected(data)}
           selectedItemPosition={this.initMinuteInex}
         />
-        <WheelPicker
+        {!this.props.format24 && <WheelPicker
           style={styles.wheelPicker}
           isAtmospheric
           isCurved
@@ -70,16 +72,20 @@ class TimePicker extends React.Component {
           selectedItemTextColor={'black'}
           onItemSelected={data => this.onAmSelected(data)}
           selectedItemPosition={this.initAmInex}
-        />
+        />}
       </View>
     );
   }
 
   onHourSelected(event) {
-    const time12format = hourTo12Format(this.selectedDate.getHours());
-    const newTime12Format = `${event.data} ${time12format[1]}`;
-    const selectedHour24format = hourTo24Format(newTime12Format);
-    this.selectedDate.setHours(selectedHour24format);
+    if (this.props.format24) {
+      this.selectedDate.setHours(event.data);
+    } else {
+      const time12format = hourTo12Format(this.selectedDate.getHours());
+      const newTime12Format = `${event.data} ${time12format[1]}`;
+      const selectedHour24format = hourTo24Format(newTime12Format);
+      this.selectedDate.setHours(selectedHour24format);
+    }
     this.onTimeSelected();
   }
 
@@ -109,6 +115,7 @@ TimePicker.propTypes = {
   onTimeSelected: PropTypes.func,
   hours: PropTypes.array,
   minutes: PropTypes.array,
+  format24: PropTypes.bool,
 };
 
 // it takes in format '12 AM' and return 24 format
@@ -137,9 +144,12 @@ const dateTo12Hour = (dateString) => {
   return [(hour.toString()), (amPm)];
 };
 
-function getHoursArray() {
+function getHoursArray(is24Hour = false) {
+  const maxHour = is24Hour ? 24 : 13
+  const minHour = is24Hour ? 0 : 1
   const arr = [];
-  for (let i = 1; i < 13; i++) {
+
+  for (let i = minHour; i < maxHour; i++) {
     arr.push(i);
   }
   return arr;

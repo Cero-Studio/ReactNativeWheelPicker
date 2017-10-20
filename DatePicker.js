@@ -51,7 +51,7 @@ class DatePicker extends React.Component {
           isCyclic
           isCurved
           visibleItemCount={8}
-          data={this.props.hours ? this.props.hours : getHoursArray()}
+          data={this.props.hours ? this.props.hours : getHoursArray(this.props.format24)}
           selectedItemTextColor={'black'}
           onItemSelected={data => this.onHourSelected(data)}
           selectedItemPosition={this.initHourInex}
@@ -215,9 +215,12 @@ function formatDatePicker(date) {
   return strDate;
 }
 
-function getHoursArray() {
+function getHoursArray(is24Hour = false) {
+  const maxHour = is24Hour ? 24 : 13
+  const minHour = is24Hour ? 0 : 1
   const arr = [];
-  for (let i = 1; i < 13; i++) {
+
+  for (let i = minHour; i < maxHour; i++) {
     arr.push(i);
   }
   return arr;
