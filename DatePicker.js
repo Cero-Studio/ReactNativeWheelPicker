@@ -132,7 +132,6 @@ class DatePicker extends React.Component {
       this.props.onDateSelected(this.selectedDate);
     }
   }
-
 }
 
 DatePicker.propTypes = {
