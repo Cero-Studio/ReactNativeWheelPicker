@@ -1,35 +1,21 @@
 import React from 'react';
-import {I18nManager} from 'react-native';
-import PropTypes from 'prop-types';
-
 import {
   View,
   StyleSheet,
 } from 'react-native';
 import WheelPicker from './WheelPicker';
 import moment from 'moment';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row'
-  },
-  wheelPicker: {
-    height: 150,
-    width: null,
-    flex: 1,
-  },
-});
+import PropTypes from 'prop-types';
 
 class TimePicker extends React.Component {
   constructor(props) {
     super(props);
     this.selectedDate = this.props.initDate ? new Date(this.props.initDate) : new Date();
     const time12format = hourTo12Format(this.selectedDate.getHours());
+    const time24format = this.selectedDate.getHours();
     this.hours = this.props.hours ? this.props.hours : getHoursArray();
     this.minutes = this.props.minutes ? this.props.minutes : getFiveMinutesArray();
-    this.initHourInex = time12format[0] - 1;
+    this.initHourInex = this.props.format24 ? time24format : time12format[0] - 1;
     const minutesCount = this.props.minutes ? this.props.minutes.length : 12
     const minutesInHour = 60
     this.initMinuteInex = Math.round(this.selectedDate.getMinutes() / (minutesInHour / minutesCount));
@@ -61,25 +47,37 @@ class TimePicker extends React.Component {
           onItemSelected={data => this.onMinuteSelected(data)}
           selectedItemPosition={this.initMinuteInex}
         />
+        {this.renderAm()}
+      </View>
+    );
+  }
+
+  renderAm() {
+    if (!this.props.format24) {
+      return (
         <WheelPicker
           style={styles.wheelPicker}
           isAtmospheric
           isCurved
-          visibleItemCount={6}
+          visibleItemCount={8}
           data={getAmArray()}
           selectedItemTextColor={'black'}
           onItemSelected={data => this.onAmSelected(data)}
           selectedItemPosition={this.initAmInex}
         />
-      </View>
-    );
+      );
+    }
   }
 
   onHourSelected(event) {
-    const time12format = hourTo12Format(this.selectedDate.getHours());
-    const newTime12Format = `${event.data} ${time12format[1]}`;
-    const selectedHour24format = hourTo24Format(newTime12Format);
-    this.selectedDate.setHours(selectedHour24format);
+    if (this.props.format24) {
+      this.selectedDate.setHours(event.data);
+    } else {
+      const time12format = hourTo12Format(this.selectedDate.getHours());
+      const newTime12Format = `${event.data} ${time12format[1]}`;
+      const selectedHour24format = hourTo24Format(newTime12Format);
+      this.selectedDate.setHours(selectedHour24format);
+    }
     this.onTimeSelected();
   }
 
@@ -101,7 +99,6 @@ class TimePicker extends React.Component {
       this.props.onTimeSelected(this.selectedDate);
     }
   }
-
 }
 
 TimePicker.propTypes = {
@@ -109,7 +106,21 @@ TimePicker.propTypes = {
   onTimeSelected: PropTypes.func,
   hours: PropTypes.array,
   minutes: PropTypes.array,
+  format24: PropTypes.bool,
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  wheelPicker: {
+    height: 150,
+    width: null,
+    flex: 1,
+  },
+});
 
 // it takes in format '12 AM' and return 24 format
 function hourTo24Format(hour) {
