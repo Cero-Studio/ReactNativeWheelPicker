@@ -13,7 +13,7 @@ class TimePicker extends React.Component {
     this.selectedDate = this.props.initDate ? new Date(this.props.initDate) : new Date();
     const time12format = hourTo12Format(this.selectedDate.getHours());
     const time24format = this.selectedDate.getHours();
-    this.hours = this.props.hours ? this.props.hours : getHoursArray();
+    this.hours = this.props.hours ? this.props.hours : getHoursArray(this.props.format24);
     this.minutes = this.props.minutes ? this.props.minutes : getFiveMinutesArray();
     this.initHourInex = this.props.format24 ? time24format : time12format[0] - 1;
     const minutesCount = this.props.minutes ? this.props.minutes.length : 12
@@ -148,10 +148,11 @@ const dateTo12Hour = (dateString) => {
   return [(hour.toString()), (amPm)];
 };
 
-function getHoursArray() {
+function getHoursArray(format24) {
   const arr = [];
-  for (let i = 1; i < 13; i++) {
-    arr.push(i);
+  const hours = format24 ? {min:0, max:23} : {min:1, max:12};
+  for (let i = hours.min; i <= hours.max; i++) {
+    arr.push(('00'+i).slice(-2));
   }
   return arr;
 }
