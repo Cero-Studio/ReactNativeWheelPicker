@@ -1,6 +1,6 @@
 {
   "name": "react-native-wheel-picker-android",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Simple Wheel Picker for Android to use with react-native",
   "main": "index.js",
   "repository": {
@@ -12,43 +12,17 @@
     "react-native",
     "android",
     "picker",
-    "wheel-picker"
+    "wheel-picker",
+    "date-picker",
+    "date-wheel-picker"
   ],
-  "author": "Artem Kosiakevych <artem.kosiakevych@eleken.co>",
+  "author": "Artem Kosiakevych <artem.kosiakevych@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ElekenAgency/ReactNativeWheelPicker/issues"
   },
   "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
-  "scripts": {
-    "fix": "eslint --fix",
-    "lint": "eslint .",
-    "test": "ava"
-  },
-  "ava": {
-    "babel": "inherit",
-    "files": [ "Tests/**/*.js", "!Tests/Setup.js" ],
-    "require": [
-      "babel-register",
-      "babel-polyfill",
-      "react-native-mock/mock",
-      "./Tests/Setup"
-    ]
-  },
   "dependencies": {
-    "moment": "^2.18.1"
-  },
-  "devDependencies": {
-    "ava": "^0.17.0",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.8.0",
-    "pre-commit": "^1.2.2",
-    "react-native-mock": "^0.2.9"
-  },
-  "pre-commit": [
-    "test"
-  ]
+    "moment": "2.22.0"
+  }
 }

@@ -1,10 +1,10 @@
-import WheelPicker from './WheelPicker';
-import TimePicker from './TimePicker';
-import DatePicker from './DatePicker';
+/**
+ * @prettier
+ * @flow
+ * */
 
+import WheelPicker from './src/WheelPicker'
+import TimePicker from './src/TimePicker'
+import DatePicker from './src/DatePicker'
 
-export {
-  WheelPicker,
-  TimePicker,
-  DatePicker,
-};
+export { WheelPicker, TimePicker, DatePicker }

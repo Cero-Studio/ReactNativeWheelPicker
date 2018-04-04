@@ -5,15 +5,18 @@
 A simple Wheel Picker for Android based on https://github.com/AigeStudio/WheelPicker
 Also you can use multiple pickers, such as DatePicker or TimePicker
 
+For IOS you can use a [good Picker for IOS](https://facebook.github.io/react-native/docs/pickerios.html#onvaluechange)
+[and DatePicker for IOS](https://facebook.github.io/react-native/docs/datepickerios.html)
+
 ## Installation Android
-1. `npm install react-native-wheel-picker-android --save`
+1. `yarn add react-native-wheel-picker-android`
 2. `react-native link react-native-wheel-picker-android`
 
 # Usage
 
 ```js
 
-import {WheelPicker, DatePicker, TimePicker} from 'react-native-wheel-picker-android'
+import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-android'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -22,10 +25,11 @@ import {
   View
 } from 'react-native';
 
+const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
+const now = new Date()
+
 class MyPickers extends Component {
   render() {
-    let now = new Date()
-    let wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return (
       <View style={styles.container}>
         <WheelPicker
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   wheelPicker: {
-    width:200,
+    width: 200,
     height: 150
   }
 });
@@ -75,7 +79,7 @@ module.exports = MyPickers;
 
 ## Wheel Picker
 
-![](./src/wheelPicker.gif)
+![](./src/assets/wheelPicker.gif)
 
 ```js
 
@@ -86,7 +90,7 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
     let arr = [1,2,3];
     return (
       <WheelPicker
-          onItemSelected={(event)=>{console.log(event)}}
+          onItemSelected={(event)=>{/* do something */}}
           isCurved
           isCyclic
           data={arr}
@@ -129,15 +133,15 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 
 ## Time Picker
 
-![](./src/timePicker.gif)
+![](./src/assets/timePicker.gif)
 
 ```js
 
 ...
 
   render() {
-    let minutesArray = ['00', '15', '30', '45'];
-    let now = new Date();
+    const minutesArray = ['00', '15', '30', '45'];
+    const now = new Date();
     return (
       	<TimePicker
 	       minutes={minutesArray}
@@ -164,7 +168,7 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 
 ## Date Picker
 
-![](./src/datePicker.gif)
+![](./src/assets/datePicker.gif)
 
 ```js
 
@@ -174,8 +178,8 @@ Callback with event in the form `event = { data: 1, position: 0 }`
   let now = new Date();
     return (
       	<DatePicker
-	    initDate={now.toISOString()}
-	    onDateSelected={(date)=> this.onDateSelected(date)}/>
+          initDate={now.toISOString()}
+          onDateSelected={(date)=> this.onDateSelected(date)}/>
     );
   }
 
