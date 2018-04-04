@@ -83,7 +83,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   render() {
-    const { startDate, days, daysCount, hours, minutes } = this.props
+    const { startDate, days, daysCount, hours, minutes, format24 } = this.props
     const { initHourInex, initDayInex, initMinuteInex } = this.state
     return (
       <View style={styles.container}>
@@ -103,7 +103,7 @@ export default class DatePicker extends React.Component<Props, State> {
           isCyclic
           isCurved
           visibleItemCount={8}
-          data={hours || getHoursArray()}
+          data={hours || getHoursArray(format24)}
           selectedItemTextColor={'black'}
           onItemSelected={this.onHourSelected}
           selectedItemPosition={initHourInex}

@@ -42,17 +42,13 @@ type State = {
 export default class TimePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const selectedDate = this.props.initDate
-      ? new Date(this.props.initDate)
-      : new Date()
+    const { initDate, format24, minutes } = props
+    const selectedDate = initDate ? new Date(initDate) : new Date()
     const time12format = hourTo12Format(selectedDate.getHours())
     const time24format = selectedDate.getHours()
-    const hours = this.props.hours ? this.props.hours : getHoursArray()
-    const minutes = this.props.minutes || getFiveMinutesArray()
-    const initHourInex = this.props.format24
-      ? time24format
-      : Number(time12format[0]) - 1
-    const minutesCount = this.props.minutes ? this.props.minutes.length : 12
+    const hours = this.props.hours || getHoursArray(format24)
+    const initHourInex = format24 ? time24format : Number(time12format[0]) - 1
+    const minutesCount = minutes ? minutes.length : 12
 
     const initMinuteInex = Math.round(
       selectedDate.getMinutes() / (HOUR / minutesCount)
@@ -61,7 +57,7 @@ export default class TimePicker extends React.Component<Props, State> {
     this.state = {
       selectedDate,
       hours,
-      minutes,
+      minutes: minutes || getFiveMinutesArray(),
       initHourInex,
       initMinuteInex,
       initAmInex,

@@ -63,10 +63,11 @@ function formatDatePicker(date: Date) {
     return strDate
 }
 
-export function getHoursArray() {
+export function getHoursArray(format24: boolean) {
+    const hours = format24 ? { min: 0, max: 23 } : { min: 1, max: 12 }
     const arr = []
-    for (let i = 1; i < 13; i++) {
-        arr.push(i)
+    for (let i = hours.min; i <= hours.max; i++) {
+        arr.push(`00${i}`.slice(-2))
     }
     return arr
 }
