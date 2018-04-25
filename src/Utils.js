@@ -55,7 +55,7 @@ export function pickerDateArray(date: string, daysCount: number = YEAR) {
 }
 
 function formatDatePicker(date: number) {
-    const strDate = moment.unix(date).format('ddd MMM D YY')
+    const strDate = moment.unix(date).format('ddd MMM D')
 
     return strDate
 }
