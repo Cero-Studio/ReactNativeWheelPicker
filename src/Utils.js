@@ -10,6 +10,7 @@ const PM = 'PM'
 const YEAR = 365
 const TODAY = 'Today'
 const ONE_DAY_IN_SECONDS = 86400;
+const ONE_SECOND=1000;
 
 // it takes in format '12 AM' and return 24 format
 export function hourTo24Format(hour: string) {
@@ -49,7 +50,7 @@ export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const arr = []
     for (let i = 0; i < daysCount; i++) {
             arr.push(
-                formatDatePicker((Date.parse(startDate)/1000) + (i*ONE_DAY_IN_SECONDS))
+                formatDatePicker((Date.parse(startDate)/ONE_SECOND) + (i*ONE_DAY_IN_SECONDS))
             )
     }
     return arr
