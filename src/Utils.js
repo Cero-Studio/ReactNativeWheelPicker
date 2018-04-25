@@ -47,19 +47,16 @@ export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const startDate = date ? new Date(date) : new Date()
     const arr = []
     for (let i = 0; i < daysCount; i++) {
-        if (i === 0 && startDate.getDate() === new Date().getDate()) {
-            arr.push(TODAY)
-        } else {
             arr.push(
-                formatDatePicker(new Date(new Date().setDate(startDate.getDate() + i)))
+                formatDatePicker((Date.parse(startDate)/1000) + (i*86400))
             )
-        }
     }
     return arr
 }
 
-function formatDatePicker(date: Date) {
-    const strDate = moment(date).format('ddd MMM D')
+function formatDatePicker(date: number) {
+    const strDate = moment.unix(date).format('ddd MMM D YY')
+
     return strDate
 }
 
