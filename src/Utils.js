@@ -50,8 +50,8 @@ export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const arr = []
 
     for (let i = 0; i < daysCount; i++) {
-        const test = (Date.parse(startDate) / ONE_SECOND) + (i * ONE_DAY_IN_SECONDS)
-        if (moment.unix(Date.parse(new Date()) / ONE_SECOND).format('MM/DD/YYYY') === moment.unix(test).format('MM/DD/YYYY')) {
+        const ithDateFromStartDate = (Date.parse(startDate) / ONE_SECOND) + (i * ONE_DAY_IN_SECONDS)
+        if (moment.unix(Date.parse(new Date()) / ONE_SECOND).format('MM/DD/YYYY') === moment.unix(ithDateFromStartDate).format('MM/DD/YYYY')) {
             arr.push(TODAY)
         }
         else {
