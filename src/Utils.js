@@ -48,18 +48,23 @@ export function increaseDateByDays(date: Date, numOfDays: ?number) {
 export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const startDate = date ? new Date(date) : new Date()
     const arr = []
+
     for (let i = 0; i < daysCount; i++) {
+        const ithDateFromStartDate = (Date.parse(startDate) / ONE_SECOND) + (i * ONE_DAY_IN_SECONDS)
+        if (moment.unix(Date.parse(new Date()) / ONE_SECOND).format('MM/DD/YYYY') === moment.unix(ithDateFromStartDate).format('MM/DD/YYYY')) {
+            arr.push(TODAY)
+        }
+        else {
             arr.push(
-                formatDatePicker((Date.parse(startDate)/ONE_SECOND) + (i*ONE_DAY_IN_SECONDS))
+                formatDatePicker((Date.parse(startDate) / ONE_SECOND) + (i * ONE_DAY_IN_SECONDS))
             )
+        }
     }
     return arr
 }
 
 function formatDatePicker(date: number) {
-    const strDate = moment.unix(date).format('ddd MMM D')
-
-    return strDate
+    return moment.unix(date).format('ddd MMM D');
 }
 
 export function getHoursArray(format24: boolean) {
