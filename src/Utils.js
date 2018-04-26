@@ -45,7 +45,7 @@ export function increaseDateByDays(date: Date, numOfDays: ?number) {
     return nextDate
 }
 
-export function pickerDateArray(date: string, daysCount: number = YEAR, selectedDate: object) {
+export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const startDate = date ? new Date(date) : new Date()
     const arr = []
 
