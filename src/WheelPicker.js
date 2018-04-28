@@ -19,6 +19,7 @@ type Props = {
   visibleItemCount?: number,
   renderIndicator?: boolean,
   indicatorColor?: string,
+  indicatorThickness?: number,
   isCurtain?: boolean,
   curtainColor?: string,
   itemTextColor?: string,
