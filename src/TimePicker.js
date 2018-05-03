@@ -28,6 +28,8 @@ type Props = {
   hours: Array<number>,
   minutes: Array<string>,
   format24: boolean,
+  itemTextColor?: string,
+  selectedItemTextColor?: string,
 }
 
 type State = {
@@ -65,6 +67,10 @@ export default class TimePicker extends React.Component<Props, State> {
   }
 
   render() {
+    const {
+      itemTextColor = 'grey',
+      selectedItemTextColor = 'black',
+    } = this.props
     const { hours, initHourInex, minutes, initMinuteInex } = this.state
     return (
       <View style={styles.container}>
@@ -75,7 +81,8 @@ export default class TimePicker extends React.Component<Props, State> {
           isCurved
           visibleItemCount={6}
           data={hours}
-          selectedItemTextColor={'black'}
+          itemTextColor={itemTextColor}
+          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onHourSelected}
           selectedItemPosition={initHourInex}
         />
@@ -86,7 +93,8 @@ export default class TimePicker extends React.Component<Props, State> {
           isCurved
           visibleItemCount={6}
           data={minutes}
-          selectedItemTextColor={'black'}
+          itemTextColor={itemTextColor}
+          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onMinuteSelected}
           selectedItemPosition={initMinuteInex}
         />
@@ -96,6 +104,7 @@ export default class TimePicker extends React.Component<Props, State> {
   }
 
   renderAm() {
+    const { itemTextColor, selectedItemTextColor } = this.props
     const { initAmInex } = this.state
     return (
       <WheelPicker
@@ -104,7 +113,8 @@ export default class TimePicker extends React.Component<Props, State> {
         isCurved
         visibleItemCount={8}
         data={getAmArray()}
-        selectedItemTextColor={'black'}
+        itemTextColor={itemTextColor}
+        selectedItemTextColor={selectedItemTextColor}
         onItemSelected={this.onAmSelected}
         selectedItemPosition={initAmInex}
       />
@@ -158,3 +168,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 })
+
