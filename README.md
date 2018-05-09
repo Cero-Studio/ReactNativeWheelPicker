@@ -10,6 +10,7 @@ and [DatePicker for IOS](https://facebook.github.io/react-native/docs/datepicker
 
 ## Installation Android
 `yarn add react-native-wheel-picker-android`
+
 `react-native link react-native-wheel-picker-android`
 
 # Usage
