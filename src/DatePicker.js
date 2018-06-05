@@ -17,6 +17,7 @@ import {
 } from './Utils'
 
 const millisecondsPerDay = 1000 * 60 * 60 * 24
+const HOUR = 60
 
 type Event = {
   data: string | number,
@@ -47,7 +48,7 @@ type State = {
 export default class DatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const { startDate } = props
+    const { startDate, minutes } = props
     const selectedDate = this.props.initDate
       ? new Date(this.props.initDate)
       : new Date()
@@ -69,13 +70,17 @@ export default class DatePicker extends React.Component<Props, State> {
     const initHourInex = this.props.format24
       ? time24format
       : Number(time12format[0]) - 1
-    const initMinuteInex = Math.round(selectedDate.getMinutes() / 5)
+    const minutesCount = minutes ? minutes.length : 12
+    const initMinuteInex = Math.round(
+      selectedDate.getMinutes() / (HOUR / minutesCount)
+    )
     const initAmInex = time12format[1] === 'AM' ? 0 : 1
 
     this.state = {
       daysAfterSelectedDate,
       initDayInex,
       selectedDate,
+      minutes: minutes || getFiveMinutesArray(),
       initHourInex,
       initMinuteInex,
       initAmInex,
@@ -114,7 +119,7 @@ export default class DatePicker extends React.Component<Props, State> {
           isCyclic
           isCurved
           visibleItemCount={8}
-          data={minutes || getFiveMinutesArray()}
+          data={minutes}
           selectedItemTextColor={'black'}
           onItemSelected={this.onMinuteSelected}
           selectedItemPosition={initMinuteInex}
@@ -157,6 +162,7 @@ export default class DatePicker extends React.Component<Props, State> {
     }
     selectedDate.setHours(hours)
     selectedDate.setMinutes(minutes)
+    this.setState({ selectedDate })
     this.onDateSelected(selectedDate)
   }
 
