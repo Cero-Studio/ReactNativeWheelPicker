@@ -162,6 +162,7 @@ export default class DatePicker extends React.Component<Props, State> {
     }
     selectedDate.setHours(hours)
     selectedDate.setMinutes(minutes)
+    this.setState({ selectedDate })
     this.onDateSelected(selectedDate)
   }
 
