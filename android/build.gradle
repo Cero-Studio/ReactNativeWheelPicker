@@ -3,11 +3,11 @@ apply plugin: 'com.android.library'
 def _ext = rootProject.ext
 
 def _reactNativeVersion = _ext.has('reactNative') ? _ext.reactNative : '+'
-def _compileSdkVersion = _ext.has('compileSdkVersion') ? _ext.compileSdkVersion : 23
-def _buildToolsVersion = _ext.has('buildToolsVersion') ? _ext.buildToolsVersion : '23.0.1'
-def _minSdkVersion = _ext.has('minSdkVersion') ? _ext.minSdkVersion : 16
-def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 23
-def _supportLibVersion = _ext.has('supportLibVersion') ? _ext.supportLibVersion : '23.0.1'
+def _compileSdkVersion = _ext.has('compileSdkVersion') ? _ext.compileSdkVersion : 27
+def _buildToolsVersion = _ext.has('buildToolsVersion') ? _ext.buildToolsVersion : '27.0.3'
+def _minSdkVersion = _ext.has('minSdkVersion') ? _ext.minSdkVersion : 21
+def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 27
+def _supportLibVersion = _ext.has('supportLibVersion') ? _ext.supportLibVersion : '27.1.0'
 
 android {
     compileSdkVersion _compileSdkVersion
@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${_supportLibVersion}"
-    compile "com.facebook.react:react-native:${_reactNativeVersion}"
-    compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+    implementation "com.android.support:appcompat-v7:${_supportLibVersion}"
+    implementation "com.facebook.react:react-native:${_reactNativeVersion}"
+    implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
 }
