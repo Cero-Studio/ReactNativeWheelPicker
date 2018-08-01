@@ -8,7 +8,7 @@ def _buildToolsVersion = _ext.has('buildToolsVersion') ? _ext.buildToolsVersion 
 def _minSdkVersion = _ext.has('minSdkVersion') ? _ext.minSdkVersion : 16
 def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 23
 def _supportLibVersion = _ext.has('supportLibVersion') ? _ext.supportLibVersion : '23.0.1'
-/
+
 android {
     compileSdkVersion _compileSdkVersion
     buildToolsVersion _buildToolsVersion
