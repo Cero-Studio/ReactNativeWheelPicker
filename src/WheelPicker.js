@@ -6,7 +6,7 @@
 import React from 'react'
 import { requireNativeComponent } from 'react-native'
 
-const WheelPickerView = requireNativeComponent('WheelPicker', WheelPicker)
+const WheelPickerView = requireNativeComponent('WheelPicker', null)
 
 type Props = {
   onItemSelected: any => void,
