@@ -101,6 +101,14 @@ public class WheelPickerManager extends SimpleViewManager<WheelPicker>  implemen
         }
     }
 
+
+    @ReactProp(name = "indicatorThickness")
+    public void setIndicatorSize(WheelPicker wheelPicker, int indicatorSize) {
+        if (wheelPicker!=null){
+            wheelPicker.setIndicatorSize(indicatorSize * 2);
+        }
+    }
+
     @ReactProp(name = "renderIndicator")
     public void setIndicator(WheelPicker wheelPicker, Boolean renderIndicator) {
         if (wheelPicker!=null){
