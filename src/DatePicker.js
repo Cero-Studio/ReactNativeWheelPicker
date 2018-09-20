@@ -33,6 +33,8 @@ type Props = {
   startDate: string,
   daysCount: number,
   days: Array<number>,
+  itemTextColor?: string,
+  selectedItemTextColor?: string,
 }
 
 type State = {
@@ -83,7 +85,16 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   render() {
-    const { startDate, days, daysCount, hours, minutes, format24 } = this.props
+    const {
+      startDate,
+      days,
+      daysCount,
+      hours,
+      minutes,
+      format24,
+      itemTextColor = 'grey',
+      selectedItemTextColor = 'black',
+    } = this.props
     const { initHourInex, initDayInex, initMinuteInex } = this.state
     return (
       <View style={styles.container}>
@@ -93,7 +104,8 @@ export default class DatePicker extends React.Component<Props, State> {
           isCurved
           visibleItemCount={8}
           data={days || pickerDateArray(startDate, daysCount)}
-          selectedItemTextColor={'black'}
+          itemTextColor={itemTextColor}
+          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onDaySelected}
           selectedItemPosition={initDayInex}
         />
@@ -104,7 +116,8 @@ export default class DatePicker extends React.Component<Props, State> {
           isCurved
           visibleItemCount={8}
           data={hours || getHoursArray(format24)}
-          selectedItemTextColor={'black'}
+          itemTextColor={itemTextColor}
+          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onHourSelected}
           selectedItemPosition={initHourInex}
         />
@@ -115,7 +128,8 @@ export default class DatePicker extends React.Component<Props, State> {
           isCurved
           visibleItemCount={8}
           data={minutes || getFiveMinutesArray()}
-          selectedItemTextColor={'black'}
+          itemTextColor={itemTextColor}
+          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onMinuteSelected}
           selectedItemPosition={initMinuteInex}
         />
@@ -125,6 +139,10 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   renderAm() {
+    const {
+      itemTextColor = 'grey',
+      selectedItemTextColor = 'black',
+    } = this.props
     const { initAmInex } = this.state
     return (
       <WheelPicker
@@ -133,7 +151,8 @@ export default class DatePicker extends React.Component<Props, State> {
         isCurved
         visibleItemCount={8}
         data={getAmArray()}
-        selectedItemTextColor={'black'}
+        itemTextColor={itemTextColor}
+        selectedItemTextColor={selectedItemTextColor}
         onItemSelected={this.onAmSelected}
         selectedItemPosition={initAmInex}
       />
