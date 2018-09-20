@@ -30,6 +30,7 @@ type Props = {
   format24: boolean,
   itemTextColor?: string,
   selectedItemTextColor?: string,
+  backgroundColor?: string
 }
 
 type State = {
@@ -70,10 +71,11 @@ export default class TimePicker extends React.Component<Props, State> {
     const {
       itemTextColor = 'grey',
       selectedItemTextColor = 'black',
+      backgroundColor
     } = this.props
     const { hours, initHourInex, minutes, initMinuteInex } = this.state
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor }]}>
         <WheelPicker
           style={styles.wheelPicker}
           isAtmospheric

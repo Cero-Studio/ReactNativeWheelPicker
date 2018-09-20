@@ -167,6 +167,7 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
 | itemTextColor | grey | `string` | Time Picker's items color  |
 | selectedItemTextColor | black | `string` | Time Picker's selected Item Text Color  |
+| backgroundColor | - | `string` | Time Picker background color  |
 
 
 ## Date Picker
@@ -206,6 +207,11 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | daysCount | 365 | `number` | How many days included in Date Picker |
 | itemTextColor | grey | `string` | Date Picker's items color  |
 | selectedItemTextColor | black | `string` | Date Picker's selected Item Text Color  |
+| backgroundColor | - | `string` | Date Picker background color  |
+| hideDate | - | `boolean` | Hide date wheel picker  |
+| hideHours | - | `boolean` | Hide hours wheel picker  |
+| hideMinutes | - | `boolean` | Hide minutes wheel picker  |
+| hideAM | - | `boolean` | Hide AM wheel picker  |
 
 ## Questions or suggestions?
 

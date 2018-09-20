@@ -17,6 +17,7 @@ import {
 } from './Utils'
 
 const millisecondsPerDay = 1000 * 60 * 60 * 24
+const HOUR = 60
 
 type Event = {
   data: string | number,
@@ -35,6 +36,11 @@ type Props = {
   days: Array<number>,
   itemTextColor?: string,
   selectedItemTextColor?: string,
+  backgroundColor?: string,
+  hideDate?: boolean,
+  hideHours?: boolean,
+  hideMinutes?: boolean,
+  hideAM?: boolean,
 }
 
 type State = {
@@ -49,7 +55,7 @@ type State = {
 export default class DatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const { startDate } = props
+    const { startDate, minutes } = props
     const selectedDate = this.props.initDate
       ? new Date(this.props.initDate)
       : new Date()
@@ -71,7 +77,11 @@ export default class DatePicker extends React.Component<Props, State> {
     const initHourInex = this.props.format24
       ? time24format
       : Number(time12format[0]) - 1
-    const initMinuteInex = Math.round(selectedDate.getMinutes() / 5)
+    const minutesCount = minutes ? minutes.length : 12
+    const initMinuteInex = Math.round(
+      selectedDate.getMinutes() / (HOUR / minutesCount)
+    )
+
     const initAmInex = time12format[1] === 'AM' ? 0 : 1
 
     this.state = {
@@ -94,11 +104,16 @@ export default class DatePicker extends React.Component<Props, State> {
       format24,
       itemTextColor = 'grey',
       selectedItemTextColor = 'black',
+      backgroundColor,
+      hideDate,
+      hideHours,
+      hideMinutes,
+      hideAM,
     } = this.props
     const { initHourInex, initDayInex, initMinuteInex } = this.state
     return (
-      <View style={styles.container}>
-        <WheelPicker
+      <View style={[styles.container, { backgroundColor }]}>
+        {!hideDate && <WheelPicker
           style={styles.dateWheelPicker}
           isAtmospheric
           isCurved
@@ -108,8 +123,8 @@ export default class DatePicker extends React.Component<Props, State> {
           selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onDaySelected}
           selectedItemPosition={initDayInex}
-        />
-        <WheelPicker
+        />}
+        {!hideHours && <WheelPicker
           style={styles.wheelPicker}
           isAtmospheric
           isCyclic
@@ -120,8 +135,8 @@ export default class DatePicker extends React.Component<Props, State> {
           selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onHourSelected}
           selectedItemPosition={initHourInex}
-        />
-        <WheelPicker
+        />}
+        {!hideMinutes && <WheelPicker
           style={styles.wheelPicker}
           isAtmospheric
           isCyclic
@@ -132,8 +147,8 @@ export default class DatePicker extends React.Component<Props, State> {
           selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onMinuteSelected}
           selectedItemPosition={initMinuteInex}
-        />
-        {!this.props.format24 && this.renderAm()}
+        />}
+        {!this.props.format24 && !hideAM && this.renderAm()}
       </View>
     )
   }
@@ -208,6 +223,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   onDateSelected(selectedDate: Date) {
+    this.setState({ selectedDate })
     if (this.props.onDateSelected) {
       this.props.onDateSelected(selectedDate)
     }
