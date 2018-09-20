@@ -9,6 +9,8 @@ const AM = 'AM'
 const PM = 'PM'
 const YEAR = 365
 const TODAY = 'Today'
+const ONE_DAY_IN_SECONDS = 86400;
+const ONE_SECOND = 1000;
 
 // it takes in format '12 AM' and return 24 format
 export function hourTo24Format(hour: string) {
@@ -46,21 +48,24 @@ export function increaseDateByDays(date: Date, numOfDays: ?number) {
 export function pickerDateArray(date: string, daysCount: number = YEAR) {
     const startDate = date ? new Date(date) : new Date()
     const arr = []
+
     for (let i = 0; i < daysCount; i++) {
-        if (i === 0 && startDate.getDate() === new Date().getDate()) {
+        const ithDateFromStartDate = (Date.parse(startDate) / ONE_SECOND) + (i * ONE_DAY_IN_SECONDS)
+        if (moment.unix(Date.parse(new Date()) / ONE_SECOND).format('MM/DD/YYYY') ===
+            moment.unix(ithDateFromStartDate).format('MM/DD/YYYY')) {
             arr.push(TODAY)
-        } else {
+        }
+        else {
             arr.push(
-                formatDatePicker(new Date(new Date().setDate(startDate.getDate() + i)))
+                formatDatePicker(ithDateFromStartDate)
             )
         }
     }
     return arr
 }
 
-function formatDatePicker(date: Date) {
-    const strDate = moment(date).format('ddd MMM D')
-    return strDate
+function formatDatePicker(date: number) {
+    return moment.unix(date).format('ddd MMM D');
 }
 
 export function getHoursArray(format24: boolean) {
