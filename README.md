@@ -1,6 +1,9 @@
 # ReactNativeWheelPicker
-[![npm version](http://img.shields.io/npm/v/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
-[![npm version](http://img.shields.io/npm/dm/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
+<p>
+<img src="http://img.shields.io/npm/v/react-native-wheel-picker-android.svg" />
+<img src="https://img.shields.io/npm/dm/react-native-wheel-picker-android.svg" />
+<img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
+</p>
 
 A simple Wheel Picker for Android based on https://github.com/AigeStudio/WheelPicker
 Also you can use multiple pickers, such as DatePicker or TimePicker
