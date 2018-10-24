@@ -206,7 +206,7 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | hours | [1, 2, 3 .. 12] | `array` | hours array |
 | minutes | ['00', '05', '10', .. '55'] | `array` | minutes array |
 | format24 | false | `bool` | if true hours format is 24 hours|
-| startDate | current date | `ISOString` | The Earlest date |
+| startDate | current date | `ISOString` | The Earliest date |
 | daysCount | 365 | `number` | How many days included in Date Picker |
 | itemTextColor | grey | `string` | Date Picker's items color  |
 | selectedItemTextColor | black | `string` | Date Picker's selected Item Text Color  |
