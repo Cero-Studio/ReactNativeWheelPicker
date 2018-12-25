@@ -1,19 +1,26 @@
 # ReactNativeWheelPicker
-[![npm version](http://img.shields.io/npm/v/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
-[![npm version](http://img.shields.io/npm/dm/react-native-wheel-picker-android.svg?style=flat-square)](https://npmjs.org/package/react-native-wheel-picker-android "View this project on npm")
+<p>
+<img src="http://img.shields.io/npm/v/react-native-wheel-picker-android.svg" />
+<img src="https://img.shields.io/npm/dm/react-native-wheel-picker-android.svg" />
+<img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
+</p>
 
 A simple Wheel Picker for Android based on https://github.com/AigeStudio/WheelPicker
 Also you can use multiple pickers, such as DatePicker or TimePicker
 
+For IOS you can use a [good Picker for IOS](https://facebook.github.io/react-native/docs/pickerios.html)
+and [DatePicker for IOS](https://facebook.github.io/react-native/docs/datepickerios.html)
+
 ## Installation Android
-1. `npm install react-native-wheel-picker-android --save`
-2. `react-native link react-native-wheel-picker-android`
+`yarn add react-native-wheel-picker-android`
+
+`react-native link react-native-wheel-picker-android`
 
 # Usage
 
 ```js
 
-import {WheelPicker, DatePicker, TimePicker} from 'react-native-wheel-picker-android'
+import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-android'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -22,10 +29,11 @@ import {
   View
 } from 'react-native';
 
+const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
+const now = new Date()
+
 class MyPickers extends Component {
   render() {
-    let now = new Date()
-    let wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return (
       <View style={styles.container}>
         <WheelPicker
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   wheelPicker: {
-    width:200,
+    width: 200,
     height: 150
   }
 });
@@ -75,7 +83,7 @@ module.exports = MyPickers;
 
 ## Wheel Picker
 
-![](./src/wheelPicker.gif)
+![](./src/assets/wheelPicker.gif)
 
 ```js
 
@@ -86,7 +94,7 @@ import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-a
     let arr = [1,2,3];
     return (
       <WheelPicker
-          onItemSelected={(event)=>{console.log(event)}}
+          onItemSelected={(event)=>{/* do something */}}
           isCurved
           isCyclic
           data={arr}
@@ -129,15 +137,15 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 
 ## Time Picker
 
-![](./src/timePicker.gif)
+![](./src/assets/timePicker.gif)
 
 ```js
 
 ...
 
   render() {
-    let minutesArray = ['00', '15', '30', '45'];
-    let now = new Date();
+    const minutesArray = ['00', '15', '30', '45'];
+    const now = new Date();
     return (
       	<TimePicker
 	       minutes={minutesArray}
@@ -160,11 +168,14 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | initDate | current date | `ISOString` | Initial selected time  |
 | hours | [1, 2, 3, .. 12] | `array` | hours array |
 | minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
+| itemTextColor | grey | `string` | Time Picker's items color  |
+| selectedItemTextColor | black | `string` | Time Picker's selected Item Text Color  |
+| backgroundColor | - | `string` | Time Picker background color  |
 
 
 ## Date Picker
 
-![](./src/datePicker.gif)
+![](./src/assets/datePicker.gif)
 
 ```js
 
@@ -174,8 +185,8 @@ Callback with event in the form `event = { data: 1, position: 0 }`
   let now = new Date();
     return (
       	<DatePicker
-	    initDate={now.toISOString()}
-	    onDateSelected={(date)=> this.onDateSelected(date)}/>
+          initDate={now.toISOString()}
+          onDateSelected={(date)=> this.onDateSelected(date)}/>
     );
   }
 
@@ -197,6 +208,13 @@ Callback with event in the form `event = { data: 1, position: 0 }`
 | format24 | false | `bool` | if true hours format is 24 hours|
 | startDate | current date | `ISOString` | The Earlest date |
 | daysCount | 365 | `number` | How many days included in Date Picker |
+| itemTextColor | grey | `string` | Date Picker's items color  |
+| selectedItemTextColor | black | `string` | Date Picker's selected Item Text Color  |
+| backgroundColor | - | `string` | Date Picker background color  |
+| hideDate | - | `boolean` | Hide date wheel picker  |
+| hideHours | - | `boolean` | Hide hours wheel picker  |
+| hideMinutes | - | `boolean` | Hide minutes wheel picker  |
+| hideAM | - | `boolean` | Hide AM wheel picker  |
 
 ## Questions or suggestions?
 
