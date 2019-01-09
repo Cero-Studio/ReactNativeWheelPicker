@@ -5,16 +5,12 @@
 <img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
 </p>
 
-A simple Wheel Picker for Android based on https://github.com/AigeStudio/WheelPicker
+A simple Wheel Picker for Android and IOs (PickerIOS)
 Also you can use multiple pickers, such as DatePicker or TimePicker
 
-For IOS you can use a [good Picker for IOS](https://facebook.github.io/react-native/docs/pickerios.html)
-and [DatePicker for IOS](https://facebook.github.io/react-native/docs/datepickerios.html)
 
 ## Installation Android
 `yarn add react-native-wheel-picker-android`
-
-`react-native link react-native-wheel-picker-android`
 
 # Usage
 

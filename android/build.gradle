@@ -24,5 +24,4 @@ dependencies {
 
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation 'com.facebook.react:react-native:+'
-    implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
 }

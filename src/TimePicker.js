@@ -78,27 +78,21 @@ export default class TimePicker extends React.Component<Props, State> {
       <View style={[styles.container, { backgroundColor }]}>
         <WheelPicker
           style={styles.wheelPicker}
-          isAtmospheric
           isCyclic
-          isCurved
-          visibleItemCount={6}
           data={hours}
           itemTextColor={itemTextColor}
           selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onHourSelected}
-          selectedItemPosition={initHourInex}
+          initPosition={initHourInex}
         />
         <WheelPicker
           style={styles.wheelPicker}
-          isAtmospheric
           isCyclic
-          isCurved
-          visibleItemCount={6}
           data={minutes}
           itemTextColor={itemTextColor}
           selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onMinuteSelected}
-          selectedItemPosition={initMinuteInex}
+          initPosition={initMinuteInex}
         />
         {!this.props.format24 && this.renderAm()}
       </View>
@@ -111,19 +105,17 @@ export default class TimePicker extends React.Component<Props, State> {
     return (
       <WheelPicker
         style={styles.wheelPicker}
-        isAtmospheric
-        isCurved
-        visibleItemCount={8}
         data={getAmArray()}
         itemTextColor={itemTextColor}
         selectedItemTextColor={selectedItemTextColor}
         onItemSelected={this.onAmSelected}
-        selectedItemPosition={initAmInex}
+        initPosition={initAmInex}
       />
     )
   }
 
   onHourSelected = (event: Event) => {
+    alert()
     const selectedDate = this.state.selectedDate
     if (this.props.format24) {
       selectedDate.setHours(Number(event.data))
