@@ -1,4 +1,4 @@
-# ReactNativeWheelPicker
+# ReactNativeWheelPicker WIP V2
 <p>
 <img src="http://img.shields.io/npm/v/react-native-wheel-picker-android.svg" />
 <img src="https://img.shields.io/npm/dm/react-native-wheel-picker-android.svg" />
