@@ -5,18 +5,19 @@
 <img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
 </p>
 
-A simple Wheel Picker for Android and IOs (PickerIOS)
-Also you can use multiple pickers, such as DatePicker or TimePicker
+A simple Wheel Picker for Android (For IOs is used PickerIOS)
 
 
-## Installation Android
+## Installation
 `yarn add react-native-wheel-picker-android`
+
+![](./src/assets/wheelPicker.gif)
 
 # Usage
 
 ```js
 
-import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-android'
+import { WheelPicker } from 'react-native-wheel-picker-android'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -26,36 +27,20 @@ import {
 } from 'react-native';
 
 const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
-const now = new Date()
 
 class MyPickers extends Component {
   render() {
     return (
       <View style={styles.container}>
         <WheelPicker
-           onItemSelected={(event)=>this.onItemSelected(event)}
-           isCurved
+           onItemSelected={this.onItemSelected}
            data={wheelPickerData}
            style={styles.wheelPicker}/>
-         <DatePicker
-           initDate={now.toISOString()}
-           onDateSelected={(date)=>this.onDateSelected(date)}/>
-         <TimePicker
-           initDate={now.toISOString()}
-           onTimeSelected={(date)=>this.onTimeSelected(date)}/>
       </View>
     );
   }
 
-  onItemSelected(event){
-    // do something
-  }
-
-  onDateSelected(date){
-    // do something
-  }
-
-  onTimeSelected(date){
+  onItemSelected(position){
     // do something
   }
 
@@ -77,140 +62,24 @@ module.exports = MyPickers;
 
 ```
 
-## Wheel Picker
-
-![](./src/assets/wheelPicker.gif)
-
-```js
-
-import { WheelPicker, DatePicker, TimePicker } from 'react-native-wheel-picker-android'
-...
-
-  render() {
-    let arr = [1,2,3];
-    return (
-      <WheelPicker
-          onItemSelected={(event)=>{/* do something */}}
-          isCurved
-          isCyclic
-          data={arr}
-          style={{width:300, height: 300}}/>
-    );
-  }
-```
-
 ## Props
 
 | Prop  | Default  | Type | Description |
 | :------------ |:---------------:| :---------------:| :-----|
-| onItemSelected | null | `func` | Callback when user select item {data: 'itemData', position: 'itemPosition'} |
-| data | default string array | `array` | Data array (string or number type)  |
-| isCurved | false | `bool` | Make Wheel Picker curved |
+| onItemSelected | - | `func` | Returns selected position |
+| data | - | `Array<string>` | Data array  |
 | isCyclic | false | `bool` | Make Wheel Picker cyclic |
-| isAtmospheric | false | `bool` | Design Wheel Picker's items  |
-| selectedItemTextColor | grey | `string` | Wheel Picker's selected Item Text Color  |
-| itemSpace | 20 | `number` | Wheel Picker's items spacing |
-| visibleItemCount | 7 | `number` | Wheel Picker's items max visible count  |
-| renderIndicator | false | `bool` | Show Wheel Picker indicator |
-| indicatorColor | transparent | `string` | Indicator color  |
-| isCurtain | false | `bool` | Wheel Picker curtain  |
-| curtainColor | transparent | `string` | Wheel Picker curtain color  |
-| itemTextColor | grey | `string` | Wheel Picker's items color  |
-| itemTextSize | 20 | `number` |  Wheel Picker's items text size  |
-| itemTextFontFamily | null | `string` | Wheel Picker's items text font name  |
-| selectedItemPosition | null | `number` | Select current item position |
+| selectedItemTextColor | black | `string` | Wheel Picker's selected Item text color  |
+| selectedItemTextSize | 16 | `number` | Wheel Picker's selected Item text size  |
+| selectedItemTextFontFamily | - | `font-family` | Wheel Picker's selected Item font  |
+| itemTextColor | grey | `string` | Wheel Picker's Item Text Color  |
+| itemTextSize | 16 | `number` | Wheel Picker's Item text size  |
+| itemTextFontFamily | - | `font-family` | Wheel Picker's Item font  |
+| initPosition | 0 | `number` | Initial item position |
+| indicatorColor | black | `string` | Indicator color  |
+| hideIndicator | - | `func` | Hide indicator |
+| indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
-
-### data
-
-An array of options. This should be provided with an __array of strings__ or __array of numbers__.
-
-
-### onItemSelected(event)
-
-Callback with event in the form `event = { data: 1, position: 0 }`
-
-
-## Time Picker
-
-![](./src/assets/timePicker.gif)
-
-```js
-
-...
-
-  render() {
-    const minutesArray = ['00', '15', '30', '45'];
-    const now = new Date();
-    return (
-      	<TimePicker
-	       minutes={minutesArray}
-   	     onTimeSelected={(date)=>this.onTimeSelected(date))}
-	       initDate={now.toISOString()}/>
-    );
-  }
-
-  onTimeSelected(date){
-    // do something
-  }
-
-```
-
-## Props
-
-| Prop  | Default  | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
-| onTimeSelected | null | `func` | Callback when user select time {date: 'selectedTime'} |
-| initDate | current date | `ISOString` | Initial selected time  |
-| hours | [1, 2, 3, .. 12] | `array` | hours array |
-| minutes | ['00', '05' ,'10', .. '55'] | `array` | minutes array |
-| itemTextColor | grey | `string` | Time Picker's items color  |
-| selectedItemTextColor | black | `string` | Time Picker's selected Item Text Color  |
-| backgroundColor | - | `string` | Time Picker background color  |
-
-
-## Date Picker
-
-![](./src/assets/datePicker.gif)
-
-```js
-
-...
-
-  render() {
-  let now = new Date();
-    return (
-      	<DatePicker
-          initDate={now.toISOString()}
-          onDateSelected={(date)=> this.onDateSelected(date)}/>
-    );
-  }
-
-  onDateSelected(date){
-    // do something
-  }
-
-```
-
-## Props
-
-| Prop  | Default  | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
-| onDateSelected | null | `func` | Callback when user select date {date: 'selectedDate'} |
-| initDate | current date | `ISOString` | Initial selected date  |
-| days | ['Today', 'Wed Dec 28', ...] | `array` | days array |
-| hours | [1, 2, 3 .. 12] | `array` | hours array |
-| minutes | ['00', '05', '10', .. '55'] | `array` | minutes array |
-| format24 | false | `bool` | if true hours format is 24 hours|
-| startDate | current date | `ISOString` | The Earliest date |
-| daysCount | 365 | `number` | How many days included in Date Picker |
-| itemTextColor | grey | `string` | Date Picker's items color  |
-| selectedItemTextColor | black | `string` | Date Picker's selected Item Text Color  |
-| backgroundColor | - | `string` | Date Picker background color  |
-| hideDate | - | `boolean` | Hide date wheel picker  |
-| hideHours | - | `boolean` | Hide hours wheel picker  |
-| hideMinutes | - | `boolean` | Hide minutes wheel picker  |
-| hideAM | - | `boolean` | Hide AM wheel picker  |
 
 ## Questions or suggestions?
 
