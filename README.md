@@ -28,7 +28,7 @@ import {
 
 const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
 
-class MyPickers extends Component {
+class MyPicker extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -75,7 +75,7 @@ module.exports = MyPickers;
 | itemTextColor | grey | `string` | Wheel Picker's Item Text Color  |
 | itemTextSize | 16 | `number` | Wheel Picker's Item text size  |
 | itemTextFontFamily | - | `font-family` | Wheel Picker's Item font  |
-| initPosition | 0 | `number` | Initial item position |
+| selectedItem | 0 | `number` | Current item position |
 | indicatorColor | black | `string` | Indicator color  |
 | hideIndicator | - | `func` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |

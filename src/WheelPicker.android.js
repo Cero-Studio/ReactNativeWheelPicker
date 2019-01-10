@@ -18,7 +18,7 @@ type Props = {
   indicatorColor?: string,
   itemTextColor?: string,
   itemTextSize?: number,
-  initPosition?: number,
+  selectedItem?: number,
   backgroundColor?: string,
   onItemSelected?: number => void
 }

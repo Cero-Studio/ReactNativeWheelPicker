@@ -149,6 +149,14 @@ public class WheelPickerManager extends SimpleViewManager<LoopView> implements L
     }
 
 
+    @ReactProp(name = "selectedItem")
+    public void setSelectedItem(LoopView wheelPicker, int pos) {
+        if (wheelPicker!=null){
+            wheelPicker.setSelectedItem(pos);
+        }
+    }
+
+
     @Override
     public void onItemSelect(int item) {
         if (wheelPicker != null){
