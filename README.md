@@ -82,8 +82,8 @@ module.exports = MyPicker;
 
 # Time Picker
 
-![](./src/assets/pickerAndroid.gif)
-![](./src/assets/pickerIos.gif)
+![](./src/assets/timePickerAndroid.gif)
+![](./src/assets/timePickerIos.gif)
 
 ```js
 onTimeSelected = date => {}
