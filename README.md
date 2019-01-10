@@ -24,42 +24,40 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
-const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
+const wheelPickerData = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
 class MyPickers extends Component {
+  state = {
+    selectedItem: 0,
+  }
+
+  onItemSelected = selectedItem => {
+    this.setState({ selectedItem })
+  }
+
+  onPress = () => {
+    this.setState({ selectedItem: 3 })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <WheelPicker
-           onItemSelected={this.onItemSelected}
-           data={wheelPickerData}
-           style={styles.wheelPicker}/>
+      <Button title={'Select third element'} onPress={this.onPress}/>
+      <Text>Selected position: {this.state.selectedItem}</Text>
+      <WheelPicker 
+        selectedItem={this.state.selectedItem}
+        data={wheelPickerData} 
+        onItemSelected={this.onItemSelected}/>
       </View>
     );
   }
-
-  onItemSelected(position){
-    // do something
-  }
-
-
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  wheelPicker: {
-    width: 200,
-    height: 150
-  }
-});
-
-module.exports = MyPickers;
+module.exports = MyPicker;
 
 ```
 
