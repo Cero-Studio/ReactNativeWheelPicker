@@ -11,7 +11,8 @@ A simple Wheel Picker for Android (For IOs is used PickerIOS)
 ## Installation
 `yarn add react-native-wheel-picker-android`
 
-![](./src/assets/wheelPicker.gif)
+![](./src/assets/pickerAndroid.gif)
+![](./src/assets/pickerIos.gif)
 
 # Usage
 
@@ -28,7 +29,7 @@ import {
 
 const wheelPickerData = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'];
 
-class MyPicker extends Component {
+class MyPickers extends Component {
   render() {
     return (
       <View style={styles.container}>
