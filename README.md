@@ -18,7 +18,7 @@ A simple Wheel Picker for Android (For IOs is used PickerIOS)
 
 ```js
 
-import { WheelPicker } from 'react-native-wheel-picker-android'
+import { WheelPicker, TimePicker } from 'react-native-wheel-picker-android'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -79,6 +79,30 @@ module.exports = MyPicker;
 | hideIndicator | - | `func` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
+
+# Time Picker
+
+![](./src/assets/pickerAndroid.gif)
+![](./src/assets/pickerIos.gif)
+
+```js
+onTimeSelected = date => {}
+...
+<TimePicker onTimeSelected={this.onTimeSelected}/>
+
+```
+
+## Props
+
+| Prop  | Default  | Type | Description |
+| :------------ |:---------------:| :---------------:| :-----|
+| ...WheelPicker props | - | - | All style WheelPicker props |
+| initDate | current date | `Date` | Initial date  |
+| onTimeSelected | - | `func` | Callback with selected time |
+| hours | [1,2,3,4...] | `Array<string>` | Custom hours array  |
+| minutes | [00,05,10,15...] | `Array<string>` | Custom minutes array  |
+| format24 | false | `boolean` | Time format  |
+
 
 ## Questions or suggestions?
 

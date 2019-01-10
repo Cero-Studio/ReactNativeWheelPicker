@@ -4,5 +4,6 @@
  * */
 
 import WheelPicker from './src/WheelPicker'
+import TimePicker from './src/TimePicker'
 
-export { WheelPicker }
+export { WheelPicker, TimePicker }

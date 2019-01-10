@@ -28,18 +28,15 @@ type Props = {
   hours: Array<number>,
   minutes: Array<string>,
   format24: boolean,
-  itemTextColor?: string,
-  selectedItemTextColor?: string,
-  backgroundColor?: string
 }
 
 type State = {
   selectedDate: Date,
   hours: Array<number>,
   minutes: Array<string>,
-  initHourInex: number,
-  initMinuteInex: number,
-  initAmInex: number,
+  selectedHourIndex: number,
+  selectedMinuteIndex: number,
+  selectedAmIndex: number,
 }
 
 export default class TimePicker extends React.Component<Props, State> {
@@ -50,49 +47,45 @@ export default class TimePicker extends React.Component<Props, State> {
     const time12format = hourTo12Format(selectedDate.getHours())
     const time24format = selectedDate.getHours()
     const hours = this.props.hours || getHoursArray(format24)
-    const initHourInex = format24 ? time24format : Number(time12format[0]) - 1
+    const selectedHourIndex = format24 ? time24format : Number(time12format[0]) - 1
     const minutesCount = minutes ? minutes.length : 12
 
-    const initMinuteInex = Math.round(
+    const selectedMinuteIndex = Math.round(
       selectedDate.getMinutes() / (HOUR / minutesCount)
     )
-    const initAmInex = time12format[1] === AM ? 0 : 1
+    const selectedAmIndex = time12format[1] === AM ? 0 : 1
     this.state = {
       selectedDate,
       hours,
       minutes: minutes || getFiveMinutesArray(),
-      initHourInex,
-      initMinuteInex,
-      initAmInex,
+      selectedHourIndex,
+      selectedMinuteIndex,
+      selectedAmIndex,
     }
   }
 
   render() {
-    const {
-      itemTextColor = 'grey',
-      selectedItemTextColor = 'black',
-      backgroundColor
-    } = this.props
-    const { hours, initHourInex, minutes, initMinuteInex } = this.state
+    const { hours, selectedHourIndex, minutes, selectedMinuteIndex } = this.state
+
     return (
-      <View style={[styles.container, { backgroundColor }]}>
+      <View style={[styles.container, { backgroundColor: this.props.backgroundColor }]}>
         <WheelPicker
-          style={styles.wheelPicker}
           isCyclic
+          style={styles.wheelPicker}
+          {...this.props}
           data={hours}
-          itemTextColor={itemTextColor}
-          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onHourSelected}
-          initPosition={initHourInex}
+          selectedItem={selectedHourIndex}
+          initPosition={selectedHourIndex}
         />
         <WheelPicker
           style={styles.wheelPicker}
           isCyclic
+          {...this.props}
           data={minutes}
-          itemTextColor={itemTextColor}
-          selectedItemTextColor={selectedItemTextColor}
           onItemSelected={this.onMinuteSelected}
-          initPosition={initMinuteInex}
+          selectedItem={selectedMinuteIndex}
+          initPosition={selectedMinuteIndex}
         />
         {!this.props.format24 && this.renderAm()}
       </View>
@@ -101,43 +94,47 @@ export default class TimePicker extends React.Component<Props, State> {
 
   renderAm() {
     const { itemTextColor, selectedItemTextColor } = this.props
-    const { initAmInex } = this.state
+    const { selectedAmIndex } = this.state
     return (
       <WheelPicker
         style={styles.wheelPicker}
+        {...this.props}
         data={getAmArray()}
-        itemTextColor={itemTextColor}
-        selectedItemTextColor={selectedItemTextColor}
         onItemSelected={this.onAmSelected}
-        initPosition={initAmInex}
+        selectedItem={selectedAmIndex}
+        initPosition={selectedAmIndex}
       />
     )
   }
 
-  onHourSelected = (event: Event) => {
-    alert()
-    const selectedDate = this.state.selectedDate
+  onHourSelected = (position: number) => {
+    this.setState({selectedHourIndex: position})
+    const { selectedDate, hours } = this.state
+    const selectedHour = hours[position]
+
     if (this.props.format24) {
-      selectedDate.setHours(Number(event.data))
+      selectedDate.setHours(Number(selectedHour))
     } else {
       const time12format = hourTo12Format(selectedDate.getHours())
-      const newTime12Format = `${event.data} ${time12format[1]}`
+      const newTime12Format = `${selectedHour} ${time12format[1]}`
       const selectedHour24format = hourTo24Format(newTime12Format)
       selectedDate.setHours(selectedHour24format)
     }
     this.onTimeSelected(selectedDate)
   }
 
-  onMinuteSelected = (event: Event) => {
+  onMinuteSelected = (position: number) => {
+    this.setState({selectedMinuteIndex: position})
     const selectedDate = this.state.selectedDate
-    selectedDate.setMinutes(Number(event.data))
+    selectedDate.setMinutes(Number(this.state.minutes[position]))
     this.onTimeSelected(selectedDate)
   }
 
-  onAmSelected = (event: Event) => {
+  onAmSelected = (position: number) => {
+    this.setState({selectedAmIndex: position})
     const selectedDate = this.state.selectedDate
     const time12format = hourTo12Format(selectedDate.getHours())
-    const newTime12Format = `${time12format[0]} ${event.data}`
+    const newTime12Format = `${time12format[0]} ${getAmArray()[position]}`
     const selectedHour24format = hourTo24Format(newTime12Format)
     selectedDate.setHours(selectedHour24format)
     this.onTimeSelected(selectedDate)
@@ -152,7 +149,6 @@ export default class TimePicker extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
   },

@@ -14,6 +14,6 @@ final class LoopRunnable implements Runnable {
         LoopListener listener = loopView.loopListener;
         int selectedItem = LoopView.getSelectedItem(loopView);
         loopView.arrayList.get(selectedItem);
-        listener.onItemSelect(selectedItem);
+        listener.onItemSelect(loopView, selectedItem);
     }
 }

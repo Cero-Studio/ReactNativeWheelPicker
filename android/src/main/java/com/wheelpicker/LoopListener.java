@@ -1,6 +1,6 @@
 package com.wheelpicker;
 
 public interface LoopListener {
-    void onItemSelect(int item);
+    void onItemSelect(LoopView view, int item);
 }
 

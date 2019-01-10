@@ -158,12 +158,12 @@ public class WheelPickerManager extends SimpleViewManager<LoopView> implements L
 
 
     @Override
-    public void onItemSelect(int item) {
+    public void onItemSelect(LoopView picker, int item) {
         if (wheelPicker != null){
             WritableMap event = Arguments.createMap();
             event.putInt("position", item);
             ((ReactContext) wheelPicker.getContext()).getJSModule(RCTEventEmitter.class).receiveEvent(
-                    wheelPicker.getId(),
+                    picker.getId(),
                     "topChange",
                     event);
         }
