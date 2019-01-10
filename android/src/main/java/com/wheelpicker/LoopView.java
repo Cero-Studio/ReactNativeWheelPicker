@@ -232,7 +232,6 @@ public class LoopView extends View {
             }
             k1++;
         }
-        int left = (measuredWidth - maxTextWidth)/2;
         canvas.drawLine(0.0F, firstLineY, measuredWidth, firstLineY, paintC);
         canvas.drawLine(0.0F, secondLineY, measuredWidth, secondLineY, paintC);
         int j1 = 0;
@@ -253,34 +252,45 @@ public class LoopView extends View {
                     canvas.save();
                     //top = 0,left = (measuredWidth - maxTextWidth)/2
                     canvas.clipRect(0, 0, measuredWidth, firstLineY - translateY);
-                    canvas.drawText(as[j1], left, maxTextHeight, paintA);
+                    drawCenter(canvas, paintA, as[j1],maxTextHeight);
                     canvas.restore();
                     canvas.save();
                     canvas.clipRect(0, firstLineY - translateY, measuredWidth, (int) (itemHeight));
-                    canvas.drawText(as[j1], left, maxTextHeight, paintB);
+                    drawCenter(canvas, paintB, as[j1], maxTextHeight);
                     canvas.restore();
                 } else if (translateY <= secondLineY && maxTextHeight + translateY >= secondLineY) {
                     canvas.save();
                     canvas.clipRect(0, 0, measuredWidth, secondLineY - translateY);
-                    canvas.drawText(as[j1], left, maxTextHeight, paintB);
+                    drawCenter(canvas, paintB, as[j1], maxTextHeight);
                     canvas.restore();
                     canvas.save();
                     canvas.clipRect(0, secondLineY - translateY, measuredWidth, (int) (itemHeight));
-                    canvas.drawText(as[j1], left, maxTextHeight, paintA);
+                    drawCenter(canvas, paintA, as[j1],maxTextHeight);
                     canvas.restore();
                 } else if (translateY >= firstLineY && maxTextHeight + translateY <= secondLineY) {
                     canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
-                    canvas.drawText(as[j1], left, maxTextHeight, paintB);
+                    drawCenter(canvas, paintB, as[j1],maxTextHeight);
                     selectedItem = arrayList.indexOf(as[j1]);
                 } else {
                     canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
-                    canvas.drawText(as[j1], left, maxTextHeight, paintA);
+                    drawCenter(canvas, paintA, as[j1],maxTextHeight);
                 }
                 canvas.restore();
             }
             j1++;
         }
         super.onDraw(canvas);
+    }
+
+    private Rect r = new Rect();
+
+    private void drawCenter(Canvas canvas, Paint paint, String text, int y) {
+        canvas.getClipBounds(r);
+        int cWidth = r.width();
+        paint.setTextAlign(Paint.Align.LEFT);
+        paint.getTextBounds(text, 0, text.length(), r);
+        float x = cWidth / 2f - r.width() / 2f - r.left;
+        canvas.drawText(text, x, y, paint);
     }
 
     @Override
