@@ -30,7 +30,7 @@ import {
 
 const wheelPickerData = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
-class MyPickers extends Component {
+class MyPicker extends Component {
   state = {
     selectedItem: 0,
   }
