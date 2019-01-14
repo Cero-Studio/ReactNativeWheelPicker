@@ -76,7 +76,7 @@ module.exports = MyPicker;
 | itemTextFontFamily | - | `font-family` | Wheel Picker's Item font  |
 | selectedItem | 0 | `number` | Current item position |
 | indicatorColor | black | `string` | Indicator color  |
-| hideIndicator | - | `func` | Hide indicator |
+| hideIndicator | - | `boolean` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
 
