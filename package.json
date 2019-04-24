@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
   "dependencies": {
-    "moment": "2.22.0"
+    "moment": "^2.22.0"
   }
 }
