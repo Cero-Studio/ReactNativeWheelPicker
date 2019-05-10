@@ -75,6 +75,7 @@ module.exports = MyPicker;
 | itemTextSize | 16 | `number` | Wheel Picker's Item text size  |
 | itemTextFontFamily | - | `font-family` | Wheel Picker's Item font  |
 | selectedItem | 0 | `number` | Current item position |
+| initPosition | 0 | `number` | Initial item position |
 | indicatorColor | black | `string` | Indicator color  |
 | hideIndicator | - | `boolean` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
