@@ -99,22 +99,23 @@ module.exports = MyPicker;
 
 ## Props
 
-| Prop                       |   Default   |      Type       | Description                             |
-| :------------------------- | :---------: | :-------------: | :-------------------------------------- |
-| onItemSelected             |      -      |     `func`      | Returns selected position               |
-| data                       |      -      | `Array<string>` | Data array                              |
-| isCyclic                   |    false    |     `bool`      | Make Wheel Picker cyclic                |
-| selectedItemTextColor      |    black    |    `string`     | Wheel Picker's selected Item text color |
-| selectedItemTextSize       |     16      |    `number`     | Wheel Picker's selected Item text size  |
-| selectedItemTextFontFamily |      -      |  `font-family`  | Wheel Picker's selected Item font       |
-| itemTextColor              |    grey     |    `string`     | Wheel Picker's Item Text Color          |
-| itemTextSize               |     16      |    `number`     | Wheel Picker's Item text size           |
-| itemTextFontFamily         |      -      |  `font-family`  | Wheel Picker's Item font                |
-| selectedItem               |      0      |    `number`     | Current item position                   |
-| indicatorColor             |    black    |    `string`     | Indicator color                         |
-| hideIndicator              |      -      |    `boolean`    | Hide indicator                          |
-| indicatorWidth             |      1      |    `number`     | Indicator width                         |
-| backgroundColor            | transparent |    `string`     | Wheel Picker background color           |
+| Prop  | Default  | Type | Description |
+| :------------ |:---------------:| :---------------:| :-----|
+| onItemSelected | - | `func` | Returns selected position |
+| data | - | `Array<string>` | Data array  |
+| isCyclic | false | `bool` | Make Wheel Picker cyclic |
+| selectedItemTextColor | black | `string` | Wheel Picker's selected Item text color  |
+| selectedItemTextSize | 16 | `number` | Wheel Picker's selected Item text size  |
+| selectedItemTextFontFamily | - | `font-family` | Wheel Picker's selected Item font  |
+| itemTextColor | grey | `string` | Wheel Picker's Item Text Color  |
+| itemTextSize | 16 | `number` | Wheel Picker's Item text size  |
+| itemTextFontFamily | - | `font-family` | Wheel Picker's Item font  |
+| selectedItem | 0 | `number` | Current item position |
+| initPosition | 0 | `number` | Initial item position |
+| indicatorColor | black | `string` | Indicator color  |
+| hideIndicator | - | `boolean` | Hide indicator |
+| indicatorWidth | 1 | `number` | Indicator width |
+| backgroundColor | transparent | `string` | Wheel Picker background color  |
 
 # Time Picker
 
