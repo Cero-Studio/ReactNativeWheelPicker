@@ -11,6 +11,10 @@ A simple Wheel Picker for Android (For IOs is used PickerIOS)
 ## Installation
 `yarn add react-native-wheel-picker-android`
 
+For the android-side linking:
+
+`react-native link react-native-wheel-picker-android`
+
 ![](./src/assets/pickerAndroid.gif)
 ![](./src/assets/pickerIos.gif)
 
