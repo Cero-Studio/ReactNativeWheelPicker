@@ -80,6 +80,8 @@ module.exports = MyPicker;
 | hideIndicator | - | `boolean` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
+| style | {} | `object` | Wheel Picker style  |
+| itemStyle (iOS) | {} | `object` | Item style for PickeIOS  |
 
 # Time Picker
 
