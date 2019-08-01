@@ -24,7 +24,7 @@ type Props = {
   hours: Array<number>,
   minutes: Array<string>,
   onDateSelected: Date => void,
-  startDate: string,
+  minimumDate: string,
   daysCount: number,
   days: Array<number>,
   hideDate?: boolean,
@@ -45,7 +45,7 @@ type State = {
 export default class DatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    const { startDate, minutes } = props;
+    const { minimumDate, minutes } = props;
     const selectedDate = this.props.initialDate
       ? new Date(this.props.initialDate)
       : new Date();
@@ -54,14 +54,14 @@ export default class DatePicker extends React.Component<Props, State> {
     const millisBetween = selectedDate.getTime() - new Date().getTime();
     let millisBetweenStartDate;
     let daysStartDate = 0;
-    if (startDate) {
+    if (minimumDate) {
       millisBetweenStartDate =
-        new Date(startDate).getTime() - new Date().getTime();
+        new Date(minimumDate).getTime() - new Date().getTime();
       daysStartDate = millisBetweenStartDate / millisecondsPerDay;
     }
     const days = millisBetween / millisecondsPerDay;
     const daysAfterSelectedDate = Math.round(daysStartDate);
-    const initDayInex = startDate
+    const initDayInex = minimumDate
       ? Math.round(days) - Math.round(daysStartDate)
       : Math.round(days);
     const initHourInex = this.props.format24
@@ -86,7 +86,7 @@ export default class DatePicker extends React.Component<Props, State> {
 
   render() {
     const {
-      startDate,
+      minimumDate,
       days,
       daysCount,
       hours,
@@ -105,7 +105,7 @@ export default class DatePicker extends React.Component<Props, State> {
           <WheelPicker
             style={styles.dateWheelPicker}
             {...this.props}
-            data={days || pickerDateArray(startDate, daysCount)}
+            data={days || pickerDateArray(minimumDate, daysCount)}
             onItemSelected={this.onDaySelected}
             initPosition={initDayInex}
           />
@@ -154,14 +154,14 @@ export default class DatePicker extends React.Component<Props, State> {
     const hours = selectedDate.getHours();
     const minutes = selectedDate.getMinutes();
 
-    const { startDate, days, daysCount } = this.props;
-    const data = days || pickerDateArray(startDate, daysCount);
+    const { minimumDate, days, daysCount } = this.props;
+    const data = days || pickerDateArray(minimumDate, daysCount);
     if (data[position] === "Today") {
       selectedDate = new Date();
     } else {
       selectedDate = increaseDateByDays(
         new Date(),
-        this.props.startDate ? daysAfterSelectedDate + position : position
+        this.props.minimumDate ? daysAfterSelectedDate + position : position
       );
     }
     selectedDate.setHours(hours);
