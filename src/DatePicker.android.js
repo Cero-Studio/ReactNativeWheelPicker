@@ -20,7 +20,7 @@ const millisecondsPerDay = 1000 * 60 * 60 * 24;
 const HOUR = 60;
 
 type Props = {
-  initDate: string,
+  initialDate: string,
   hours: Array<number>,
   minutes: Array<string>,
   onDateSelected: Date => void,
@@ -46,8 +46,8 @@ export default class DatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     const { startDate, minutes } = props;
-    const selectedDate = this.props.initDate
-      ? new Date(this.props.initDate)
+    const selectedDate = this.props.initialDate
+      ? new Date(this.props.initialDate)
       : new Date();
     const time12format = hourTo12Format(selectedDate.getHours());
     const time24format = selectedDate.getHours();
