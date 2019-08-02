@@ -71,6 +71,23 @@ function formatDatePicker(date: number) {
   return moment.unix(date).format("ddd MMM D");
 }
 
+export function computeDatePosition(
+  date: Date,
+  startDate: Date,
+  daysCount: number
+) {
+  const dateDiff = moment(date).diff(startDate, "days");
+  if (dateDiff < 0) return -1;
+  if (dateDiff >= daysCount) return -1;
+  return dateDiff;
+}
+
+export function getDateFromPosition(position: Number, startDate: Date): Date {
+  return moment(startDate)
+    .add(position, "days")
+    .toDate();
+}
+
 export function getHoursArray(format24: boolean) {
   const hours = format24 ? { min: 0, max: 23 } : { min: 1, max: 12 };
   const arr = [];
@@ -78,6 +95,19 @@ export function getHoursArray(format24: boolean) {
     arr.push(`00${i}`.slice(-2));
   }
   return arr;
+}
+
+export function computeHourPosition(
+  date: Date,
+  hours: number[],
+  format24?: boolean
+) {
+  let hour = date.getHours();
+  if (!format24) {
+    hour = hour % 12;
+    if (hour == 0) hour = 12;
+  }
+  return Math.max(hours.findIndex(h => Number(h) === hour), 0);
 }
 
 export function getFiveMinutesArray() {

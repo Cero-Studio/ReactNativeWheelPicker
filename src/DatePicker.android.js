@@ -13,24 +13,30 @@ import {
   getHoursArray,
   increaseDateByDays,
   getFiveMinutesArray,
-  getAmArray
+  getAmArray,
+  computeDatePosition,
+  getDateFromPosition,
+  computeHourPosition
 } from "./Utils";
+
+const DAYS_IN_A_YEAR = 365;
 
 const millisecondsPerDay = 1000 * 60 * 60 * 24;
 const HOUR = 60;
 
 type Props = {
-  initialDate: string,
-  hours: Array<number>,
-  minutes: Array<string>,
+  initialDate?: string | Date,
+  minimumDate?: string | Date,
   onDateSelected: Date => void,
-  minimumDate: string,
+  hours?: Array<number>,
+  minutes?: Array<string>,
   daysCount: number,
-  days: Array<number>,
+  days?: Array<number>,
   hideDate?: boolean,
   hideHours?: boolean,
   hideMinutes?: boolean,
-  hideAM?: boolean
+  hideAM?: boolean,
+  format24?: boolean
 };
 
 type State = {
@@ -43,8 +49,44 @@ type State = {
 };
 
 export default class DatePicker extends React.Component<Props, State> {
+  static defaultProps = {
+    daysCount: DAYS_IN_A_YEAR
+  };
+
   constructor(props: Props) {
     super(props);
+    console.log({ initDate: props.initialDate });
+
+    const todayAtMidnight = new Date();
+    todayAtMidnight.setHours(0);
+    todayAtMidnight.setMinutes(0);
+    todayAtMidnight.setSeconds(0);
+    console.log({ todayAtMidnight });
+
+    let initialDate = new Date();
+
+    this.startDate = props.minimumDate || todayAtMidnight;
+    console.log({ startDate: this.startDate });
+
+    // initial date position
+    const dayPos = props.initialDate
+      ? computeDatePosition(
+          new Date(props.initialDate),
+          this.startDate,
+          props.daysCount
+        )
+      : 0;
+    initialDate = getDateFromPosition(dayPos, this.startDate);
+    console.log({ dayPos, initialDate });
+
+    //initial hour position
+    this.hourTable = props.hours || getHoursArray(props.format24);
+    const hourPos = props.initialDate
+      ? computeHourPosition(props.initialDate, this.hourTable, props.format24)
+      : 0;
+    initialDate.setHours(this.hourTable[hourPos]);
+    console.log({ hourPos, initialDate });
+
     const { minimumDate, minutes } = props;
     const selectedDate = this.props.initialDate
       ? new Date(this.props.initialDate)
@@ -83,6 +125,9 @@ export default class DatePicker extends React.Component<Props, State> {
       initAmInex
     };
   }
+
+  startDate: Date;
+  hourTable: string[];
 
   render() {
     const {
