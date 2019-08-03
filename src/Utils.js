@@ -99,7 +99,7 @@ export function getHoursArray(format24: boolean) {
 
 export function computeHourPosition(
   date: Date,
-  hours: number[],
+  hours: string[],
   format24?: boolean
 ) {
   let hour = date.getHours();
