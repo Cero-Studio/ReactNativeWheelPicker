@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/ElekenAgency/ReactNativeWheelPicker.git"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "keywords": [
     "react-component",
     "react-native",
@@ -23,6 +26,14 @@
   },
   "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
   "dependencies": {
-    "moment": "2.22.0"
+    "moment": "2.22.0",
+    "react-native": "^0.57"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.55.0"
   }
 }
