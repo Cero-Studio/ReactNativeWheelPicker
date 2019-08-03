@@ -3,7 +3,9 @@ import {
   computeDatePosition,
   getDateFromPosition,
   computeHourPosition,
-  getHoursArray
+  getHoursArray,
+  computeMinutePosition,
+  getFiveMinutesArray
 } from "../Utils";
 
 mockdate.set("2019-08-01T02:12:00");
@@ -57,6 +59,30 @@ describe("Utils", () => {
       "returns $result if the date is $date $hoursText",
       ({ date, hours, format24, result }) => {
         expect(computeHourPosition(date, hours, format24)).toEqual(result);
+      }
+    );
+  });
+
+  describe(computeMinutePosition.name, () => {
+    const minutes = getFiveMinutesArray();
+    const quarters = ["00", "15", "30", "45"];
+    const randomMinutes = ["00", "22", "27", "51"];
+    test.each`
+      date                               | minutes          | minutesText                     | result
+      ${new Date()}                      | ${minutes}       | ${"with five-minute intervals"} | ${2}
+      ${new Date("2019-08-04T18:00:00")} | ${minutes}       | ${"with five-minute intervals"} | ${0}
+      ${new Date("2019-08-04T18:02:00")} | ${minutes}       | ${"with five-minute intervals"} | ${0}
+      ${new Date("2019-08-04T18:51:00")} | ${minutes}       | ${"with five-minute intervals"} | ${10}
+      ${new Date("2019-08-04T18:02:00")} | ${quarters}      | ${"with quarters"}              | ${0}
+      ${new Date("2019-08-04T18:29:00")} | ${quarters}      | ${"with quarters"}              | ${1}
+      ${new Date("2019-08-04T18:46:00")} | ${quarters}      | ${"with quarters"}              | ${3}
+      ${new Date("2019-08-04T18:40:00")} | ${randomMinutes} | ${"with random minutes"}        | ${2}
+      ${new Date("2019-08-04T18:22:00")} | ${randomMinutes} | ${"with random minutes"}        | ${1}
+      ${new Date("2019-08-04T18:57:00")} | ${randomMinutes} | ${"with random minutes"}        | ${3}
+    `(
+      "returns $result if the date is $date $minutesText",
+      ({ date, minutes, result }) => {
+        expect(computeMinutePosition(date, minutes)).toEqual(result);
       }
     );
   });

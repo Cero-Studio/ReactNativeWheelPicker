@@ -16,7 +16,8 @@ import {
   getAmArray,
   computeDatePosition,
   getDateFromPosition,
-  computeHourPosition
+  computeHourPosition,
+  computeMinutePosition
 } from "./Utils";
 
 const DAYS_IN_A_YEAR = 365;
@@ -87,6 +88,16 @@ export default class DatePicker extends React.Component<Props, State> {
     initialDate.setHours(this.hourTable[hourPos]);
     console.log({ hourPos, initialDate });
 
+    //initial minute position
+    this.minuteTable = props.minutes || getFiveMinutesArray();
+    const minutePos = props.initialDate
+      ? computeMinutePosition(props.initialDate, this.minuteTable)
+      : 0;
+    initialDate.setMinutes(this.minuteTable[minutePos]);
+    console.log({ minutePos, initialDate });
+
+    initialDate.setSeconds(0);
+
     const { minimumDate, minutes } = props;
     const selectedDate = this.props.initialDate
       ? new Date(this.props.initialDate)
@@ -128,6 +139,7 @@ export default class DatePicker extends React.Component<Props, State> {
 
   startDate: Date;
   hourTable: string[];
+  minuteTable: string[];
 
   render() {
     const {

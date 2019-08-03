@@ -120,6 +120,13 @@ export function getFiveMinutesArray() {
   return arr;
 }
 
+export function computeMinutePosition(date: Date, minutes: string[]) {
+  const minute = date.getMinutes();
+  const position = minutes.findIndex(m => Number(m) > minute) - 1;
+  if (position < 0) return minutes.length - 1;
+  return position;
+}
+
 export function getAmArray() {
   const arr = [];
   arr.push(AM);
