@@ -5,7 +5,8 @@ import {
   computeHourPosition,
   getHoursArray,
   computeMinutePosition,
-  getFiveMinutesArray
+  getFiveMinutesArray,
+  computeAMPMPosition
 } from "../Utils";
 
 mockdate.set("2019-08-01T02:12:00");
@@ -85,5 +86,17 @@ describe("Utils", () => {
         expect(computeMinutePosition(date, minutes)).toEqual(result);
       }
     );
+  });
+
+  describe(computeAMPMPosition.name, () => {
+    test.each`
+      date                               | result
+      ${new Date()}                      | ${0}
+      ${new Date("2019-08-04T18:22:00")} | ${1}
+      ${new Date("2019-08-04T12:22:00")} | ${1}
+      ${new Date("2019-08-04T00:22:00")} | ${0}
+    `("returns $result if the date is $date", ({ date, result }) => {
+      expect(computeAMPMPosition(date)).toEqual(result);
+    });
   });
 });

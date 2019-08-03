@@ -110,6 +110,11 @@ export function computeHourPosition(
   return Math.max(hours.findIndex(h => Number(h) === hour), 0);
 }
 
+export function computeAMPMPosition(date: Date) {
+  const hour = date.getHours();
+  return hour < 12 ? 0 : 1;
+}
+
 export function getFiveMinutesArray() {
   const arr = [];
   arr.push("00");

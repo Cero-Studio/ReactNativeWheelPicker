@@ -17,7 +17,8 @@ import {
   computeDatePosition,
   getDateFromPosition,
   computeHourPosition,
-  computeMinutePosition
+  computeMinutePosition,
+  computeAMPMPosition
 } from "./Utils";
 
 const DAYS_IN_A_YEAR = 365;
@@ -43,10 +44,10 @@ type Props = {
 type State = {
   selectedDate: Date,
   daysAfterSelectedDate: number,
-  initDayInex: number,
-  initHourInex: number,
-  initMinuteInex: number,
-  initAmInex: number
+  dayPos: number,
+  hourPos: number,
+  minutePos: number,
+  amPos: number
 };
 
 export default class DatePicker extends React.Component<Props, State> {
@@ -85,6 +86,9 @@ export default class DatePicker extends React.Component<Props, State> {
     const hourPos = props.initialDate
       ? computeHourPosition(props.initialDate, this.hourTable, props.format24)
       : 0;
+    const amPos = props.initialDate
+      ? computeAMPMPosition(props.initialDate)
+      : 0;
     initialDate.setHours(this.hourTable[hourPos]);
     console.log({ hourPos, initialDate });
 
@@ -98,42 +102,12 @@ export default class DatePicker extends React.Component<Props, State> {
 
     initialDate.setSeconds(0);
 
-    const { minimumDate, minutes } = props;
-    const selectedDate = this.props.initialDate
-      ? new Date(this.props.initialDate)
-      : new Date();
-    const time12format = hourTo12Format(selectedDate.getHours());
-    const time24format = selectedDate.getHours();
-    const millisBetween = selectedDate.getTime() - new Date().getTime();
-    let millisBetweenStartDate;
-    let daysStartDate = 0;
-    if (minimumDate) {
-      millisBetweenStartDate =
-        new Date(minimumDate).getTime() - new Date().getTime();
-      daysStartDate = millisBetweenStartDate / millisecondsPerDay;
-    }
-    const days = millisBetween / millisecondsPerDay;
-    const daysAfterSelectedDate = Math.round(daysStartDate);
-    const initDayInex = minimumDate
-      ? Math.round(days) - Math.round(daysStartDate)
-      : Math.round(days);
-    const initHourInex = this.props.format24
-      ? time24format
-      : Number(time12format[0]) - 1;
-    const minutesCount = minutes ? minutes.length : 12;
-    const initMinuteInex = Math.round(
-      selectedDate.getMinutes() / (HOUR / minutesCount)
-    );
-
-    const initAmInex = time12format[1] === "AM" ? 0 : 1;
-
     this.state = {
-      daysAfterSelectedDate,
-      initDayInex,
-      selectedDate,
-      initHourInex,
-      initMinuteInex,
-      initAmInex
+      dayPos,
+      hourPos,
+      minutePos,
+      amPos,
+      selectedDate: initialDate
     };
   }
 
@@ -155,16 +129,17 @@ export default class DatePicker extends React.Component<Props, State> {
       hideMinutes,
       hideAM
     } = this.props;
-    const { initHourInex, initDayInex, initMinuteInex } = this.state;
+    const { dayPos, hourPos, minutePos } = this.state;
     return (
       <View style={[styles.container, { backgroundColor }]}>
         {!hideDate && (
           <WheelPicker
             style={styles.dateWheelPicker}
             {...this.props}
-            data={days || pickerDateArray(minimumDate, daysCount)}
+            data={pickerDateArray(minimumDate, daysCount)}
             onItemSelected={this.onDaySelected}
-            initPosition={initDayInex}
+            initPosition={0}
+            selectedItem={dayPos}
           />
         )}
         {!hideHours && (
@@ -172,9 +147,10 @@ export default class DatePicker extends React.Component<Props, State> {
             style={styles.wheelPicker}
             {...this.props}
             isCyclic
-            data={hours || getHoursArray(format24)}
+            data={this.hourTable}
             onItemSelected={this.onHourSelected}
-            initPosition={initHourInex}
+            initPosition={0}
+            selectedItem={hourPos}
           />
         )}
         {!hideMinutes && (
@@ -182,9 +158,10 @@ export default class DatePicker extends React.Component<Props, State> {
             style={styles.wheelPicker}
             {...this.props}
             isCyclic
-            data={minutes || getFiveMinutesArray()}
+            data={this.minuteTable}
             onItemSelected={this.onMinuteSelected}
-            initPosition={initMinuteInex}
+            initPosition={0}
+            selectedItem={minutePos}
           />
         )}
         {!this.props.format24 && !hideAM && this.renderAm()}
@@ -193,14 +170,15 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   renderAm() {
-    const { initAmInex } = this.state;
+    const { amPos } = this.state;
     return (
       <WheelPicker
         style={styles.wheelPicker}
         {...this.props}
         data={getAmArray()}
         onItemSelected={this.onAmSelected}
-        initPosition={initAmInex}
+        initPosition={0}
+        selectedItem={amPos}
       />
     );
   }
