@@ -57,6 +57,25 @@ export default class DatePicker extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+
+    const {
+      dayPos,
+      hourPos,
+      minutePos,
+      amPos,
+      initialDate
+    } = this.computeInitialPositions(props);
+
+    this.state = {
+      dayPos,
+      hourPos,
+      minutePos,
+      amPos,
+      selectedDate: initialDate
+    };
+  }
+
+  computeInitialPositions(props) {
     console.log({ initDate: props.initialDate });
 
     const todayAtMidnight = new Date();
@@ -102,13 +121,7 @@ export default class DatePicker extends React.Component<Props, State> {
 
     initialDate.setSeconds(0);
 
-    this.state = {
-      dayPos,
-      hourPos,
-      minutePos,
-      amPos,
-      selectedDate: initialDate
-    };
+    return { dayPos, hourPos, minutePos, amPos, initialDate };
   }
 
   startDate: Date;
@@ -201,26 +214,21 @@ export default class DatePicker extends React.Component<Props, State> {
   };
 
   onHourSelected = (position: number) => {
-    const selectedDate = this.state.selectedDate;
-    const { hours, format24 } = this.props;
-    const data = hours || getHoursArray(format24);
-    if (this.props.format24) {
-      selectedDate.setHours(Number(data[position]));
-    } else {
-      const time12format = hourTo12Format(selectedDate.getHours());
-      const newTime12Format = `${data[position]} ${time12format[1]}`;
-      const selectedHour24format = hourTo24Format(newTime12Format);
-      selectedDate.setHours(selectedHour24format);
-    }
-    this.onDateSelected(selectedDate);
+    this.setState(
+      {
+        hourPos: position
+      },
+      this.updateDate
+    );
   };
 
   onMinuteSelected = (position: number) => {
-    const selectedDate = this.state.selectedDate;
-    const { minutes } = this.props;
-    const data = minutes || getFiveMinutesArray();
-    selectedDate.setMinutes(Number(data[position]));
-    this.onDateSelected(selectedDate);
+    this.setState(
+      {
+        minutePos: position
+      },
+      this.updateDate
+    );
   };
 
   onAmSelected = (position: number) => {
