@@ -183,25 +183,21 @@ export default class DatePicker extends React.Component<Props, State> {
     );
   }
 
-  onDaySelected = (position: number) => {
-    let selectedDate = this.state.selectedDate;
-    const daysAfterSelectedDate = this.state.daysAfterSelectedDate;
-    const hours = selectedDate.getHours();
-    const minutes = selectedDate.getMinutes();
-
-    const { minimumDate, days, daysCount } = this.props;
-    const data = days || pickerDateArray(minimumDate, daysCount);
-    if (data[position] === "Today") {
-      selectedDate = new Date();
-    } else {
-      selectedDate = increaseDateByDays(
-        new Date(),
-        this.props.minimumDate ? daysAfterSelectedDate + position : position
-      );
-    }
-    selectedDate.setHours(hours);
-    selectedDate.setMinutes(minutes);
+  updateDate = () => {
+    const { dayPos, hourPos, minutePos } = this.state;
+    let selectedDate = getDateFromPosition(dayPos, this.startDate);
+    selectedDate.setHours(this.hourTable[hourPos]);
+    selectedDate.setMinutes(this.minuteTable[minutePos]);
     this.onDateSelected(selectedDate);
+  };
+
+  onDaySelected = (position: number) => {
+    this.setState(
+      {
+        dayPos: position
+      },
+      this.updateDate
+    );
   };
 
   onHourSelected = (position: number) => {
