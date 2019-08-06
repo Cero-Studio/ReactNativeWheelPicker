@@ -76,7 +76,18 @@ export function computeDatePosition(
   startDate: Date,
   daysCount: number
 ) {
-  const dateDiff = moment(date).diff(startDate, "days");
+  const startDateAtMidnight = new Date(startDate);
+  startDateAtMidnight.setHours(0);
+  startDateAtMidnight.setMinutes(0);
+  startDateAtMidnight.setSeconds(0);
+
+  // so that the date diff is the correct value
+  const dateAtMidday = new Date(date);
+  dateAtMidday.setHours(12);
+  dateAtMidday.setMinutes(0);
+  dateAtMidday.setSeconds(0);
+
+  const dateDiff = moment(dateAtMidday).diff(startDateAtMidnight, "days");
   if (dateDiff < 0) return -1;
   if (dateDiff >= daysCount) return -1;
   return dateDiff;
