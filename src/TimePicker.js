@@ -75,7 +75,6 @@ export default class TimePicker extends React.Component<Props, State> {
           {...this.props}
           data={hours}
           onItemSelected={this.onHourSelected}
-          selectedItem={selectedHourIndex}
           initPosition={selectedHourIndex}
         />
         <WheelPicker
@@ -84,7 +83,6 @@ export default class TimePicker extends React.Component<Props, State> {
           {...this.props}
           data={minutes}
           onItemSelected={this.onMinuteSelected}
-          selectedItem={selectedMinuteIndex}
           initPosition={selectedMinuteIndex}
         />
         {!this.props.format24 && this.renderAm()}
