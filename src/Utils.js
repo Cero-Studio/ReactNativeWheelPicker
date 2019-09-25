@@ -5,6 +5,8 @@
 
 import moment from 'moment'
 
+const DEFAULT_DATE_PICKER_FORMAT = 'ddd MMM D'
+
 const AM = 'AM'
 const PM = 'PM'
 const YEAR = 365
@@ -45,7 +47,7 @@ export function increaseDateByDays(date: Date, numOfDays: ?number) {
     return nextDate
 }
 
-export function pickerDateArray(date: string, daysCount: number = YEAR) {
+export function pickerDateArray(date: string, daysCount: number = YEAR, datePickerFormat: string = DEFAULT_DATE_PICKER_FORMAT) {
     const startDate = date ? new Date(date) : new Date()
     const arr = []
 
@@ -57,15 +59,15 @@ export function pickerDateArray(date: string, daysCount: number = YEAR) {
         }
         else {
             arr.push(
-                formatDatePicker(ithDateFromStartDate)
+                formatDatePicker(ithDateFromStartDate, datePickerFormat)
             )
         }
     }
     return arr
 }
 
-function formatDatePicker(date: number) {
-    return moment.unix(date).format('ddd MMM D');
+function formatDatePicker(date: number, format: string) {
+    return moment.unix(date).format(format);
 }
 
 export function getHoursArray(format24: boolean) {
