@@ -8,32 +8,35 @@ import { StyleSheet, Dimensions } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 type Props = {
-  onDateSelected: Date => void,
-  initDate: Date,
+  onTimeSelected: Date => void,
+  initTime: Date,
 };
 
 type State = {
-  chosenDate: Date,
+  chosenTime: Date,
 };
 
 export default class DatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { chosenDate: props.initDate || new Date() };
+    this.state = { chosenTime: props.initTime || new Date() };
   }
 
-  setDate = (event, newDate) => {
-    this.setState({ chosenDate: newDate });
-    const { onDateSelected } = this.props;
-    if (onDateSelected) onDateSelected(newDate);
+  setTime = (event, newDate) => {
+    this.setState({ chosenTime: newDate });
+    const { onTimeSelected } = this.props;
+    if (onTimeSelected) {
+      onTimeSelected(newDate);
+    }
   };
 
   render() {
     return (
       <DateTimePicker
+        mode="time"
         style={styles.picker}
-        value={this.state.chosenDate}
-        onChange={(_, date) => this.setDate(date)}
+        value={this.state.chosenTime}
+        onChange={this.setTime}
         {...this.props}
       />
     );

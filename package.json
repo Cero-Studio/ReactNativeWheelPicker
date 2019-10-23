@@ -1,5 +1,5 @@
 {
-  "name": "react-native-wheel-picker-android",
+  "name": "react-native-wheel-picker-savl",
   "version": "2.0.5",
   "description": "Simple Wheel Picker for Android to use with react-native",
   "main": "index.js",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
   "dependencies": {
-    "moment": "2.22.0"
+    "@react-native-community/datetimepicker": "^2.1.0",
+    "moment": "^2.24.0"
   }
 }
