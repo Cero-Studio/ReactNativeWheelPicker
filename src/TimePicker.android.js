@@ -10,11 +10,6 @@ import { hourTo24Format, hourTo12Format, getHoursArray, getMinutesArray, getAmAr
 
 const { RNDeviceTimeFormat } = NativeModules;
 
-type Event = {
-  data: string | number,
-  position: number,
-};
-
 type Props = {|
   initTime: string,
   onTimeSelected: Date => void,

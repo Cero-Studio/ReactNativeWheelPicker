@@ -20,7 +20,7 @@ export default class WheelPicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      selectedItem: props.selectedItem,
+      selectedItem: this.props.selectedItem || 0,
     };
   }
 
@@ -31,17 +31,22 @@ export default class WheelPicker extends React.Component<Props, State> {
   }
 
   onItemSelected = (value: any, index: number) => {
-    if (this.props.onItemSelected) {
-      this.props.onItemSelected(index);
+    const { onItemSelected } = this.props;
+    if (onItemSelected) {
+      onItemSelected(index);
     }
     this.setState({ selectedItem: index });
   };
 
   render() {
-    const data = this.props.data;
-    if (!data || !data.length < 0) return null;
+    const { data, selectedItem, onItemSelected, ...pickerProps } = this.props;
+
+    if (!data) {
+      return null;
+    }
+
     return (
-      <Picker {...this.props} selectedValue={data[this.state.selectedItem]} onValueChange={this.onItemSelected}>
+      <Picker {...pickerProps} selectedValue={data[this.state.selectedItem]} onValueChange={this.onItemSelected}>
         {this.props.data.map((i, index) => (
           <Picker.Item key={index} label={i} value={i} />
         ))}

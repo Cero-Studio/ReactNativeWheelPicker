@@ -92,3 +92,8 @@ export function getAmArray() {
   arr.push(PM);
   return arr;
 }
+
+export type Event = {
+  data: string | number,
+  position: number,
+};
