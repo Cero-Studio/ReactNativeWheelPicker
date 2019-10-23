@@ -10,6 +10,7 @@ type Props = {
   data: Array<string>,
   selectedItem?: number,
   onItemSelected?: number => void,
+  label?: (value: string) => string,
 };
 
 type State = {
@@ -39,7 +40,7 @@ export default class WheelPicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { data, selectedItem, onItemSelected, ...pickerProps } = this.props;
+    const { data, selectedItem, onItemSelected, label, ...pickerProps } = this.props;
 
     if (!data) {
       return null;
@@ -48,7 +49,7 @@ export default class WheelPicker extends React.Component<Props, State> {
     return (
       <Picker {...pickerProps} selectedValue={data[this.state.selectedItem]} onValueChange={this.onItemSelected}>
         {this.props.data.map((i, index) => (
-          <Picker.Item key={index} label={i} value={i} />
+          <Picker.Item key={index} label={label ? label(i) : i} value={i} />
         ))}
       </Picker>
     );
