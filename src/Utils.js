@@ -58,9 +58,9 @@ export function pickerDateArray(
   const arr = [];
 
   for (let i = 0; i < daysCount; i++) {
-    const ithDateFromStartDate = Date.parse(startDate) / ONE_SECOND + i * ONE_DAY_IN_SECONDS;
+    const ithDateFromStartDate = Date.parse(startDate.toString()) / ONE_SECOND + i * ONE_DAY_IN_SECONDS;
     if (
-      moment.unix(Date.parse(new Date()) / ONE_SECOND).format('MM/DD/YYYY') ===
+      moment.unix(Date.parse(new Date().toString()) / ONE_SECOND).format('MM/DD/YYYY') ===
       moment.unix(ithDateFromStartDate).format('MM/DD/YYYY')
     ) {
       arr.push(TODAY);
@@ -75,15 +75,15 @@ function formatDatePicker(date: number, format: string) {
   return moment.unix(date).format(format);
 }
 
-export function getHoursArray(format24: boolean) {
+export function getHoursArray(format24: boolean): Array<string> {
   if (format24) {
-    return new Array(24).fill(0).map((_, i) => `00${i}`.slice(-2));
+    return new Array(24).fill(0).map((_, i): string => `00${i}`.slice(-2));
   }
-  return new Array(12).fill(0).map((_, i) => i + 1);
+  return new Array(12).fill(0).map((_, i): string => `${i + 1}`);
 }
 
-export function getMinutesArray(minuteInterval = 1) {
-  return new Array(60 / minuteInterval).fill(0).map((_, i) => `00${i * minuteInterval}`.slice(-2));
+export function getMinutesArray(minuteInterval: number = 1): Array<string> {
+  return new Array(60 / minuteInterval).fill(0).map((_, i): string => `00${i * minuteInterval}`.slice(-2));
 }
 
 export function getAmArray() {

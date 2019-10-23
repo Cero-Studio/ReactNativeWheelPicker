@@ -37,7 +37,7 @@ export default class DatePicker extends React.Component<Props, State> {
       <DateTimePicker
         style={styles.picker}
         value={this.state.chosenDate}
-        onChange={(_, date) => this.setDate(date)}
+        onChange={this.setDate}
         {...this.props}
       />
     );
