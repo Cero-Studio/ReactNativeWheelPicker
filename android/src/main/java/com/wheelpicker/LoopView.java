@@ -186,7 +186,7 @@ public class LoopView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         String as[];
-        if (arrayList == null) {
+        if (arrayList == null || arrayList.size() == 0) {
             super.onDraw(canvas);
             return;
         }
