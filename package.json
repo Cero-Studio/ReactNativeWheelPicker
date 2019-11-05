@@ -24,6 +24,7 @@
   "homepage": "https://github.com/ElekenAgency/ReactNativeWheelPicker",
   "dependencies": {
     "@react-native-community/datetimepicker": "^2.1.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "react-native-device-time-format": "git+https://github.com/bitfamilyteam/react-native-device-time-format.git"
   }
 }
