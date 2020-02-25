@@ -305,6 +305,9 @@ public class LoopView extends View {
         switch (motionevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 y1 = motionevent.getRawY();
+                if (getParent() != null) {
+                  getParent().requestDisallowInterceptTouchEvent(true);
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 y2 = motionevent.getRawY();
@@ -320,9 +323,13 @@ public class LoopView extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
             default:
                 if (!gestureDetector.onTouchEvent(motionevent) && motionevent.getAction() == MotionEvent.ACTION_UP) {
                     smoothScroll();
+                }
+                if (getParent() != null) {
+                  getParent().requestDisallowInterceptTouchEvent(false);
                 }
                 return true;
         }
