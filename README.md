@@ -116,6 +116,7 @@ module.exports = MyPicker;
 | hideIndicator | - | `boolean` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
+| disabled | undefind | `bool` | Disable picker selection  |
 
 # Time Picker
 
