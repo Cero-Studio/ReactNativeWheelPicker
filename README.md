@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
 </p>
 
-A simple Wheel Picker for Android (For IOs is used PickerIOS)
+A simple Wheel Picker for Android (For IOs is using Picker from react-native)
 
 ## Installation
 
