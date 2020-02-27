@@ -119,6 +119,7 @@ module.exports = MyPicker;
 | disabled | undefind | `bool` | Disable picker selection  |
 
 # Time Picker
+For IOs DatePickerIOS is used
 
 ![](./src/assets/timePickerAndroid.gif)
 ![](./src/assets/timePickerIos.gif)
@@ -134,12 +135,13 @@ onTimeSelected = date => {}
 
 | Prop                 |     Default      |      Type       | Description                 |
 | :------------------- | :--------------: | :-------------: | :-------------------------- |
-| ...WheelPicker props |        -         |        -        | All style WheelPicker props |
+| [DatePickerIOS props](https://facebook.github.io/react-native/docs/datepickerios#props) |        -         |        -        | All DatePickerIOS props (IOS only) |
+| ...WheelPicker props |        -         |        -        | All style WheelPicker props (Android only) |
 | initDate             |   current date   |     `Date`      | Initial date                |
 | onTimeSelected       |        -         |     `func`      | Callback with selected time |
-| hours                |   [1,2,3,4...]   | `Array<string>` | Custom hours array          |
-| minutes              | [00,05,10,15...] | `Array<string>` | Custom minutes array        |
-| format24             |      false       |    `boolean`    | Time format                 |
+| hours                |   [1,2,3,4...]   | `Array<string>` | Custom hours array (Android only)         |
+| minutes              | [00,05,10,15...] | `Array<string>` | Custom minutes array (Android only)       |
+| format24             |      false       |    `boolean`    | Time format (Android only)                |
 
 # Date Picker
 
