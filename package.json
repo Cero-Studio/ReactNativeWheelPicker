@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/kalontech/ReactNativeWheelPicker",
   "dependencies": {
-    "moment": "^2.22.0"
+    "moment": "^2.24.0"
   }
 }
