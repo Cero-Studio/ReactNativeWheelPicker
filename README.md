@@ -6,15 +6,11 @@
 <img src="https://img.shields.io/npm/dt/react-native-wheel-picker-android.svg" />
 </p>
 
-A simple Wheel Picker for Android (For IOs is using Picker from react-native)
-
-## Example
-
-You can clone the repo and run example from ./example folder
+A simple Wheel Picker for Android (For IOs is used PickerIOS)
 
 ## Installation
 
-`yarn add react-native-extend-wheel-picker-android`
+`yarn add react-native-wheel-picker-android`
 
 ![](./src/assets/pickerAndroid.gif)
 ![](./src/assets/pickerIos.gif)
@@ -120,10 +116,8 @@ module.exports = MyPicker;
 | hideIndicator | - | `boolean` | Hide indicator |
 | indicatorWidth | 1 | `number` | Indicator width |
 | backgroundColor | transparent | `string` | Wheel Picker background color  |
-| disabled | undefind | `bool` | Disable picker selection  |
 
 # Time Picker
-For IOs DatePickerIOS is used
 
 ![](./src/assets/timePickerAndroid.gif)
 ![](./src/assets/timePickerIos.gif)
@@ -139,13 +133,12 @@ onTimeSelected = date => {}
 
 | Prop                 |     Default      |      Type       | Description                 |
 | :------------------- | :--------------: | :-------------: | :-------------------------- |
-| [DatePickerIOS props](https://facebook.github.io/react-native/docs/datepickerios#props) |        -         |        -        | All DatePickerIOS props (IOS only) |
-| ...WheelPicker props |        -         |        -        | All style WheelPicker props (Android only) |
+| ...WheelPicker props |        -         |        -        | All style WheelPicker props |
 | initDate             |   current date   |     `Date`      | Initial date                |
 | onTimeSelected       |        -         |     `func`      | Callback with selected time |
-| hours                |   [1,2,3,4...]   | `Array<string>` | Custom hours array (Android only)         |
-| minutes              | [00,05,10,15...] | `Array<string>` | Custom minutes array (Android only)       |
-| format24             |      false       |    `boolean`    | Time format (Android only)                |
+| hours                |   [1,2,3,4...]   | `Array<string>` | Custom hours array          |
+| minutes              | [00,05,10,15...] | `Array<string>` | Custom minutes array        |
+| format24             |      false       |    `boolean`    | Time format                 |
 
 # Date Picker
 
