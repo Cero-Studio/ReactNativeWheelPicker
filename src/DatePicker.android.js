@@ -35,8 +35,8 @@ type Props = {
   initDayPosition?: number,
   initHourPosition?: number,
   initMinutesPosition?: number,
-  icCyclicHours?: boolean,
-  icCyclicMinutes?: boolean,
+  isCyclicHours?: boolean,
+  isCyclicMinutes?: boolean,
   onItemSelected?: Object => void,
 }
 
@@ -111,8 +111,8 @@ export default class DatePicker extends React.Component<Props, State> {
       initDayPosition,
       initHourPosition,
       initMinutesPosition,
-      icCyclicHours,
-      icCyclicMinutes,
+      isCyclicHours,
+      isCyclicMinutes,
     } = this.props
     const { initHourInex, initDayInex, initMinuteInex } = this.state
     return (
@@ -127,7 +127,7 @@ export default class DatePicker extends React.Component<Props, State> {
         {!hideHours && <WheelPicker
           style={styles.wheelPicker}
           {...this.props}
-          isCyclic={icCyclicHours}
+          isCyclic={isCyclicHours}
           data={hours || getHoursArray(format24)}
           onItemSelected={this.onHourSelected}
           initPosition={initHourPosition || initHourInex}
@@ -135,7 +135,7 @@ export default class DatePicker extends React.Component<Props, State> {
         {!hideMinutes && <WheelPicker
           style={styles.wheelPicker}
           {...this.props}
-          isCyclic={icCyclicMinutes}
+          isCyclic={isCyclicMinutes}
           data={minutes || getFiveMinutesArray()}
           onItemSelected={this.onMinuteSelected}
           initPosition={initMinutesPosition || initMinuteInex}
