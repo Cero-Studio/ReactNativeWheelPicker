@@ -153,7 +153,8 @@ export default class DatePicker extends React.Component<Props, State> {
     const {
       startDate,
       days,
-      daysCount
+      daysCount,
+      format,
     } = this.props
     const data = days || pickerDateArray(startDate, daysCount, format)
     if (data[position] === 'Today') {
