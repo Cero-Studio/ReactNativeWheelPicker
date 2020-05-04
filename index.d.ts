@@ -50,6 +50,12 @@ export interface IPropsDatePicker extends DatePickerIOSProps {
 	hideHours?: boolean;
 	hideMinutes?: boolean;
 	hideAM?: boolean;
+	initDayPosition?: number;
+	initHourPosition?: number;
+	initMinutesPosition?: number;
+	isCyclicHours?: boolean;
+	isCyclicMinutes?: boolean;
+	onItemSelected?: (res: Object) => void;
 	onDateSelected?: (res: Date) => void;
 }
 
