@@ -145,7 +145,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   onDaySelected = (position: number) => {
-    let selectedDate = this.state.selectedDate
+    let selectedDate = new Date(this.state.selectedDate.getTime())
     const daysAfterSelectedDate = this.state.daysAfterSelectedDate
     const hours = selectedDate.getHours()
     const minutes = selectedDate.getMinutes()
@@ -173,7 +173,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   onHourSelected = (position: number) => {
-    const selectedDate = this.state.selectedDate
+    const selectedDate = new Date(this.state.selectedDate.getTime())
     const { hours, format24 } = this.props
     const data = hours || getHoursArray(format24)
     if (this.props.format24) {
@@ -188,7 +188,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   onMinuteSelected = (position: number) => {
-    const selectedDate = this.state.selectedDate
+    const selectedDate = new Date(this.state.selectedDate.getTime())
     const { minutes } = this.props
     const data = minutes || getFiveMinutesArray()
     selectedDate.setMinutes(Number(data[position]))
@@ -196,7 +196,7 @@ export default class DatePicker extends React.Component<Props, State> {
   }
 
   onAmSelected = (position: number) => {
-    const selectedDate = this.state.selectedDate
+    const selectedDate = new Date(this.state.selectedDate.getTime())
     const time12format = hourTo12Format(selectedDate.getHours())
     const newTime12Format = `${time12format[0]} ${getAmArray()[position]}`
     const selectedHour24format = hourTo24Format(newTime12Format)
