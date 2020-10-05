@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Picker, View } from "react-native";
+import { View } from "react-native";
+import { Picker } from "@react-native-community/picker";
 
 interface Props {
   data: Array<string>;
@@ -7,6 +8,7 @@ interface Props {
   onItemSelected?: Function;
   disabled?: boolean;
 }
+
 const WheelPicker: React.FC<Props> = props => {
   const [selectedItem, setSelectedItem] = useState(props.selectedItem || 0);
   const { data, onItemSelected, disabled } = props;
