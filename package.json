@@ -25,5 +25,10 @@
   "dependencies": {
     "@react-native-community/picker": "^1.8.0",
     "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.56",
+    "react": "^17.0.1",
+    "react-native": "^0.63.3"
   }
 }
