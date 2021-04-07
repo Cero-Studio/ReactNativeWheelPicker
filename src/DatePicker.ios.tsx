@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { DatePickerIOS, View } from "react-native";
+import { View } from "react-native";
+import RNDateTimePicker from "@react-native-community/datetimepicker"
 
 interface Props {
   initDate: Date;
@@ -12,13 +13,13 @@ const DatePicker: React.FC<Props> = props => {
   const [date, setDate] = useState(initDate || new Date())
   return (
     <View pointerEvents={disabled ? "none" : "auto"}>
-      <DatePickerIOS
-        date={date}
-        onDateChange={(date) => {
+      <RNDateTimePicker
+          value={date}
+        onChange={(event, date) => {
           if (onDateSelected) onDateSelected(date)
           setDate(date)
         }}
-        mode={'date'}
+        mode="date"
         {...props}
       />
     </View>
