@@ -190,6 +190,12 @@ public class LoopView extends View {
             super.onDraw(canvas);
             return;
         }
+
+        // to center loop vertically
+        int offsetY = (this.getHeight() - measuredHeight) / 2;
+        firstLineY = (int) ((measuredHeight - lineSpacingMultiplier * maxTextHeight) / 2.0F) + offsetY ;
+        secondLineY = (int) ((measuredHeight + lineSpacingMultiplier * maxTextHeight) / 2.0F)  + offsetY;
+
         as = new String[itemCount];
         change = (int) (totalScrollY / (lineSpacingMultiplier * maxTextHeight));
         preCurrentIndex = initPosition + change % arrayList.size();
@@ -245,7 +251,7 @@ public class LoopView extends View {
             if (angle >= 90F || angle <= -90F) {
                 canvas.restore();
             } else {
-                int translateY = (int) (radius - Math.cos(radian) * radius - (Math.sin(radian) * maxTextHeight) / 2D);
+                int translateY = (int) (radius - Math.cos(radian) * radius - (Math.sin(radian) * maxTextHeight) / 2D) + offsetY;
                 canvas.translate(0.0F, translateY);
                 canvas.scale(1.0F, (float) Math.sin(radian));
                 if (translateY <= firstLineY && maxTextHeight + translateY >= firstLineY) {
