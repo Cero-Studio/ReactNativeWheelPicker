@@ -192,7 +192,7 @@ public class LoopView extends View {
         }
 
         // to center loop vertically
-        int offsetY = (this.getHeight() - measuredHeight) / 2;
+        int offsetY = (this.getHeight() - measuredHeight) / 2 - 2;
         firstLineY = (int) ((measuredHeight - lineSpacingMultiplier * maxTextHeight) / 2.0F) + offsetY ;
         secondLineY = (int) ((measuredHeight + lineSpacingMultiplier * maxTextHeight) / 2.0F)  + offsetY;
 
