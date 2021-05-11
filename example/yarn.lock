@@ -961,6 +961,11 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
+"@react-native-community/picker@^1.8.0":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/picker/-/picker-1.8.1.tgz#94f14f0aad98fa7592967b941be97deec95c3805"
+  integrity sha512-Sj9DzX1CSnmYiuEQ5fQhExoo4XjSKoZkqLPAAybycq6RHtCuWppf+eJXRMCOJki25BlKSSt+qVqg0fIe//ujNQ==
+
 "@types/babel__core@^7.1.0":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.6.tgz#16ff42a5ae203c9af1c6e190ed1f30f83207b610"
@@ -2956,9 +2961,9 @@ hermes-engine@^0.2.1:
   integrity sha512-eNHUQHuadDMJARpaqvlCZoK/Nitpj6oywq3vQ3wCwEsww5morX34mW5PmKWQTO7aU0ck0hgulxR+EVDlXygGxQ==
 
 hosted-git-info@^2.1.4:
-  version "2.8.7"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.7.tgz#4d2e0d5248e1cfabc984b0f6a6d75fe36e679511"
-  integrity sha512-ChkjQtKJ3GI6SsI4O5jwr8q8EPrWCnxuc4Tbx+vRI5x6mDOpjKKltNo1lRlszw3xwgTOSns1ZRBiMmmwpcvLxg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
@@ -4421,7 +4426,7 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.22.0, moment@^2.24.0:
+moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -5073,9 +5078,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
 react-native-wheel-picker-android@../:
-  version "2.0.7"
+  version "3.0.0"
   dependencies:
-    moment "^2.22.0"
+    "@react-native-community/picker" "^1.8.0"
+    moment "^2.24.0"
 
 react-native@0.61.5:
   version "0.61.5"
