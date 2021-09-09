@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Picker } from "@react-native-community/picker";
+import { Picker, PickerProps } from "@react-native-community/picker";
 
-interface Props {
+interface Props extends PickerProps {
   data: Array<string>;
   selectedItem?: number;
   onItemSelected?: Function;
