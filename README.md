@@ -37,13 +37,15 @@ In `android/app/build.gradle`
 ```
 dependencies {
     ...
-    compile project(':react-native-wheel-picker-android')
+    implementation project(':react-native-wheel-picker-android')
 }
 ```
 
 In `android/app/src/main/java/com/PROJECT_NAME/MainApplication.java`
 
 ```
+import com.wheelpicker.WheelPickerPackage;
+...
 @Override
 protected List<ReactPackage> getPackages() {
   return Arrays.<ReactPackage>asList(new MainReactPackage(), new WheelPickerPackage());
