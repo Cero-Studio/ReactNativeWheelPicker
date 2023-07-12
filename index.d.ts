@@ -4,10 +4,10 @@ import { DatePickerIOSProps, StyleProp, ViewStyle } from 'react-native';
 interface IStyle {
 	selectedItemTextColor?: string;
 	selectedItemTextSize?: number;
-	selectedItemTextFontFamily: string;
+	selectedItemTextFontFamily?: string;
 	itemTextColor?: string;
 	itemTextSize?: number;
-	itemTextFontFamily: string;
+	itemTextFontFamily?: string;
 	indicatorColor?: string;
 	hideIndicator?: boolean;
 	indicatorWidth?: number;
